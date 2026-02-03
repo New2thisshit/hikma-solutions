@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { siteConfig } from "@/lib/site";
+import MagneticController from "@/components/magnetic";
+import ThemeToggle from "@/components/theme-toggle";
 import "./globals.css";
 
 const sora = Sora({
@@ -46,6 +48,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://hikmasolutions.co.za";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: siteConfig.name,
+    url: siteUrl,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Durban",
+      addressCountry: "ZA",
+    },
+    areaServed: ["South Africa", "Worldwide"],
+    serviceArea: "Durban",
+    sameAs: [],
+  };
 
   return (
     <html lang="en">
@@ -57,6 +77,12 @@ export default function RootLayout({
             src="https://plausible.io/js/script.js"
           />
         ) : null}
+        <MagneticController />
+        <Script
+          id="hikma-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="min-h-screen bg-aurora">
           <div className="bg-grid">
             <header className="mx-auto w-full max-w-6xl px-6 py-6">
@@ -65,7 +91,7 @@ export default function RootLayout({
                   href="/"
                   className="flex items-center gap-3 text-lg font-semibold tracking-tight"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900/95 shadow-[0_10px_25px_rgba(10,26,36,0.25)]">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900/95 shadow-[0_10px_25px_rgba(10,26,36,0.25)] logo-breath">
                     <Image
                       src="/logo-mark.svg"
                       alt="Hikma Solutions logo"
@@ -75,19 +101,22 @@ export default function RootLayout({
                   </span>
                   {siteConfig.name}
                 </Link>
-                <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
+                <nav className="hidden items-center gap-6 text-sm font-medium text-[color:var(--muted)] md:flex">
                   <Link
                     href="/services"
-                    className="transition hover:text-slate-900"
+                    className="transition hover:text-[color:var(--ink)] nav-underline"
                   >
                     Services
                   </Link>
-                  <Link href="/about" className="transition hover:text-slate-900">
+                  <Link
+                    href="/about"
+                    className="transition hover:text-[color:var(--ink)] nav-underline"
+                  >
                     About
                   </Link>
                   <Link
                     href="/contact"
-                    className="transition hover:text-slate-900"
+                    className="transition hover:text-[color:var(--ink)] nav-underline"
                   >
                     Contact
                   </Link>
@@ -95,25 +124,33 @@ export default function RootLayout({
                 <Link
                   href="/contact"
                   className="btn-primary hidden md:inline-flex"
+                  data-magnet
                 >
                   Start a Project
                 </Link>
+                <div className="hidden md:block">
+                  <ThemeToggle />
+                </div>
               </div>
-              <nav className="mt-4 flex items-center gap-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 md:hidden">
-                <Link href="/services" className="hover:text-slate-900">
+              <nav className="mt-4 flex items-center gap-5 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--muted)] md:hidden">
+                <Link href="/services" className="hover:text-[color:var(--ink)]">
                   Services
                 </Link>
-                <Link href="/about" className="hover:text-slate-900">
+                <Link href="/about" className="hover:text-[color:var(--ink)]">
                   About
                 </Link>
-                <Link href="/contact" className="hover:text-slate-900">
+                <Link href="/contact" className="hover:text-[color:var(--ink)]">
                   Contact
                 </Link>
+                <ThemeToggle />
               </nav>
             </header>
             <main>{children}</main>
             <footer className="mx-auto w-full max-w-6xl px-6 pb-10 pt-16 text-sm text-slate-600">
-              <div className="grid gap-8 border-t border-white/70 pt-8 md:grid-cols-[1.5fr_1fr_1fr]">
+              <div
+                className="grid gap-8 border-t pt-8 md:grid-cols-[1.5fr_1fr_1fr]"
+                style={{ borderColor: "var(--panel-border)" }}
+              >
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/95">
@@ -132,7 +169,7 @@ export default function RootLayout({
                     Software development, app development, and websites built
                     with clarity and care.
                   </p>
-                  <p>{siteConfig.location} • Serving clients worldwide</p>
+                  <p>{siteConfig.location} - Serving clients worldwide</p>
                 </div>
                 <div className="space-y-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
@@ -157,7 +194,7 @@ export default function RootLayout({
                 </div>
               </div>
               <p className="mt-8 text-xs text-slate-500">
-                © 2026 Hikma Solutions. All rights reserved.
+                (c) 2026 Hikma Solutions. All rights reserved.
               </p>
             </footer>
           </div>

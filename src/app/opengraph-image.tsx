@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
             Software, apps, and websites that launch with clarity.
           </h1>
           <p style={{ fontSize: "22px", color: "#4b5a65", margin: 0 }}>
-            Durban, South Africa • Serving clients worldwide
+            Durban, South Africa - Serving clients worldwide
           </p>
         </div>
         <div

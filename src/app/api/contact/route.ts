@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     },
   });
 
-  const subject = `New Project Inquiry — ${data?.service || "General"}`;
+  const subject = `New Project Inquiry - ${data?.service || "General"}`;
   const text = [
     "New Project Inquiry",
     `Name: ${name}`,
