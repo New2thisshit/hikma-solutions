@@ -2,16 +2,17 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #f6f9fb;
-  --ink: #0a1a24;
-  --muted: #5b6c79;
-  --panel: rgba(255, 255, 255, 0.78);
-  --panel-border: rgba(255, 255, 255, 0.7);
-  --teal: #1ea6a3;
-  --aqua: #7ee0d4;
-  --sky: #8ecaf2;
-  --mist: #e4f1f1;
-  --glow: rgba(30, 166, 163, 0.18);
+  --bg: #f1f7fb;
+  --ink: #071923;
+  --muted: #546a79;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-border: rgba(120, 176, 210, 0.28);
+  --teal: #149e9f;
+  --aqua: #69d8cd;
+  --sky: #7fbdf0;
+  --mist: #dbeff4;
+  --glow: rgba(20, 158, 159, 0.2);
+  --grid-line: rgba(7, 25, 35, 0.07);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,17 +27,22 @@
     --sky: #9ad4ff;
     --mist: #0f1b22;
     --glow: rgba(51, 208, 198, 0.2);
+    --grid-line: rgba(148, 178, 195, 0.14);
   }
 }
 
 [data-theme="light"] {
-  --bg: #f6f9fb;
-  --ink: #0a1a24;
-  --muted: #5b6c79;
-  --panel: rgba(255, 255, 255, 0.78);
-  --panel-border: rgba(255, 255, 255, 0.7);
-  --mist: #e4f1f1;
-  --glow: rgba(30, 166, 163, 0.18);
+  --bg: #f1f7fb;
+  --ink: #071923;
+  --muted: #546a79;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-border: rgba(120, 176, 210, 0.28);
+  --teal: #149e9f;
+  --aqua: #69d8cd;
+  --sky: #7fbdf0;
+  --mist: #dbeff4;
+  --glow: rgba(20, 158, 159, 0.2);
+  --grid-line: rgba(7, 25, 35, 0.07);
 }
 
 [data-theme="dark"] {
@@ -50,6 +56,7 @@
   --sky: #9ad4ff;
   --mist: #0f1b22;
   --glow: rgba(51, 208, 198, 0.2);
+  --grid-line: rgba(148, 178, 195, 0.14);
 }
 
 @theme inline {
@@ -311,6 +318,42 @@
     transform: scaleX(1);
   }
 
+  .header-shell {
+    @apply sticky top-3 z-40;
+  }
+
+  .header-surface {
+    @apply relative overflow-hidden rounded-3xl border px-4 py-3 shadow-[0_18px_60px_rgba(10,26,36,0.08)] md:px-6 md:py-4;
+    border-color: var(--panel-border);
+    background-color: var(--panel);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 20px 60px rgba(10, 26, 36, 0.12);
+  }
+
+  .header-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--aqua), transparent 78%),
+      transparent 45%,
+      color-mix(in srgb, var(--sky), transparent 84%)
+    );
+    pointer-events: none;
+  }
+
+  .footer-link {
+    @apply inline-flex items-center gap-2 text-sm text-[color:var(--muted)] transition hover:text-[color:var(--ink)];
+  }
+
+  .footer-chip {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em];
+    border-color: var(--panel-border);
+    color: var(--muted);
+    background: color-mix(in srgb, var(--panel), transparent 10%);
+  }
+
   .logo-breath {
     animation: logoBreath 6s ease-in-out infinite;
   }
@@ -325,8 +368,8 @@
 
   .bg-aurora {
     background-image: radial-gradient(circle at top left, var(--glow), transparent 55%),
-      radial-gradient(circle at 20% 80%, rgba(142, 202, 242, 0.18), transparent 50%),
-      linear-gradient(180deg, #ffffff 0%, var(--mist) 100%);
+      radial-gradient(circle at 20% 80%, color-mix(in srgb, var(--sky), transparent 82%), transparent 50%),
+      linear-gradient(180deg, #fdfefe 0%, var(--mist) 100%);
     background-color: var(--bg);
   }
 
@@ -337,8 +380,8 @@
   }
 
   .bg-grid {
-    background-image: linear-gradient(transparent 95%, rgba(10, 26, 36, 0.06) 96%),
-      linear-gradient(90deg, transparent 95%, rgba(10, 26, 36, 0.06) 96%);
+    background-image: linear-gradient(transparent 95%, var(--grid-line) 96%),
+      linear-gradient(90deg, transparent 95%, var(--grid-line) 96%);
     background-size: 26px 26px;
   }
 

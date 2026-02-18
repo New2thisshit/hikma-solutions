@@ -50,15 +50,60 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={nextMode}
-      className="rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition hover:text-[color:var(--ink)] hover-glow"
+      className="group inline-flex h-10 w-10 items-center justify-center rounded-full border transition hover:text-[color:var(--ink)] hover-glow"
       style={{
         borderColor: "var(--panel-border)",
         backgroundColor: "var(--panel)",
         color: "var(--muted)",
       }}
-      aria-label="Toggle color theme"
+      aria-label={`Theme mode: ${mode}. Click to switch mode.`}
+      title={`Theme: ${mode}`}
     >
-      Theme: {mode}
+      <span className="sr-only">Theme mode: {mode}</span>
+      {mode === "light" ? (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      ) : null}
+      {mode === "dark" ? (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M20 14.5A8.5 8.5 0 1 1 9.5 4 7 7 0 1 0 20 14.5Z"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ) : null}
+      {mode === "system" ? (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <rect x="3" y="4" width="18" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M8 20h8M10 16v4M14 16v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      ) : null}
     </button>
   );
 }
