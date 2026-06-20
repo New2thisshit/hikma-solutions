@@ -1,14 +1,60 @@
 import ContactForm from "@/components/contact-form";
 import { siteConfig } from "@/lib/site";
 
+const whatsappHref = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+  "Hi Hikma Solutions, here is what I need help with:"
+)}`;
+
+const faqs = [
+  {
+    group: "Website Rescue",
+    items: [
+      {
+        q: "Can you improve my existing website instead of rebuilding everything?",
+        a: "Yes. The Website Rescue Sprint is designed for that. We focus on copy, CTA flow, mobile layout, trust proof, and the fastest changes that can improve enquiries.",
+      },
+      {
+        q: "What should I send first?",
+        a: "Send your current website link and say what you want more of: calls, WhatsApps, quote requests, bookings, or credibility.",
+      },
+    ],
+  },
+  {
+    group: "Business Websites",
+    items: [
+      {
+        q: "What does a website build usually include?",
+        a: "A typical build includes the main pages, copy structure, responsive design, WhatsApp/contact flow, SEO basics, and launch setup.",
+      },
+      {
+        q: "Do you work with South African service businesses?",
+        a: "Yes. Hikma Solutions is based in Durban and focuses on practical websites and business systems for South African companies.",
+      },
+    ],
+  },
+  {
+    group: "Systems and Prototypes",
+    items: [
+      {
+        q: "Can you turn spreadsheets or paper forms into software?",
+        a: "Yes. The best starting point is a prototype that maps the workflow, users, database, dashboard, and first useful build scope.",
+      },
+      {
+        q: "Can you build an MVP app?",
+        a: "Yes, but the first step is reducing the idea into a focused launch version so the project does not become too large too early.",
+      },
+    ],
+  },
+];
+
 export const metadata = {
   title: "Contact | Hikma Solutions",
   description:
-    "Contact Hikma Solutions to discuss software development, app development, or website design.",
+    "Contact Hikma Solutions for website rescue, business website builds, dashboards, and operations system prototypes in South Africa.",
   openGraph: {
     title: "Contact | Hikma Solutions",
     description:
-      "Contact Hikma Solutions to discuss software development, app development, or website design.",
+      "Send your website, spreadsheet, process, or app idea and get a practical next step from Hikma Solutions.",
   },
 };
 
@@ -17,13 +63,22 @@ export default function ContactPage() {
     <div>
       <section className="mx-auto w-full max-w-6xl px-6 pb-12 pt-10">
         <p className="eyebrow">Contact</p>
-        <h1 className="mt-4 text-4xl font-semibold text-slate-900">
-          Tell us what you want to build.
+        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+          Send the site, spreadsheet, process, or app idea you want fixed.
         </h1>
-        <p className="mt-4 max-w-2xl text-base text-slate-700">
-          Share a few details about your project and we will respond with the
-          next steps, a timeline, and a clear proposal.
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700">
+          The easiest way to start is direct: send your current website link, the
+          manual process that wastes time, or the app idea you want to reduce into
+          a realistic first version.
         </p>
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a href={whatsappHref} className="btn-primary" target="_blank" rel="noreferrer" data-magnet>
+            Start on WhatsApp
+          </a>
+          <a href={`mailto:${siteConfig.email}`} className="btn-outline" data-magnet>
+            Email Hikma
+          </a>
+        </div>
       </section>
 
       <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-24 md:grid-cols-[1.2fr_0.8fr]">
@@ -32,9 +87,7 @@ export default function ContactPage() {
         </div>
         <div className="space-y-6">
           <div className="panel p-6 hover-glow hover-halo">
-            <h2 className="text-lg font-semibold text-slate-900">
-              Contact details
-            </h2>
+            <h2 className="text-lg font-semibold text-slate-900">Contact details</h2>
             <div className="mt-4 space-y-2 text-sm text-slate-600">
               <p>{siteConfig.phone} (WhatsApp)</p>
               <p>{siteConfig.email}</p>
@@ -42,61 +95,29 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="panel p-6 hover-glow hover-halo">
-            <h3 className="text-lg font-semibold text-slate-900">
-              What happens next
-            </h3>
+            <h3 className="text-lg font-semibold text-slate-900">What to send</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
-              <li>We review your request within 24-48 hours.</li>
-              <li>We schedule a discovery call to clarify scope.</li>
-              <li>You receive a tailored plan and timeline.</li>
+              <li>Your current website link, if you have one.</li>
+              <li>The result you want: more enquiries, cleaner admin, or MVP clarity.</li>
+              <li>Any examples, screenshots, forms, spreadsheets, or rough notes.</li>
             </ul>
           </div>
           <div className="panel p-6 hover-glow hover-halo">
-            <h3 className="text-lg font-semibold text-slate-900">
-              Prefer WhatsApp?
-            </h3>
-            <p className="mt-3 text-sm text-slate-600">
-              Message us directly and we will respond quickly during business
-              hours.
-            </p>
+            <h3 className="text-lg font-semibold text-slate-900">What happens next</h3>
+            <ul className="mt-4 space-y-3 text-sm text-slate-600">
+              <li>You get a practical recommendation for the first useful step.</li>
+              <li>If the scope is clear, we suggest the best offer and price range.</li>
+              <li>If the idea is unclear, we reduce it before quoting the full build.</li>
+            </ul>
             <a
-              className="btn-primary mt-4 inline-flex"
-              href={`https://wa.me/${siteConfig.whatsapp}`}
+              className="btn-primary mt-5 inline-flex"
+              href={whatsappHref}
               target="_blank"
               rel="noreferrer"
               data-magnet
             >
-              Chat on WhatsApp
+              Message on WhatsApp
             </a>
-          </div>
-          <div className="panel relative overflow-hidden p-6">
-            <div className="absolute -right-8 -top-10 h-24 w-24 rounded-full bg-[color:var(--aqua)] opacity-40 blur-2xl float-slow" />
-            <div className="absolute -bottom-10 left-6 h-24 w-24 rounded-full bg-[color:var(--sky)] opacity-40 blur-2xl float-medium" />
-            <div className="relative space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Quick start
-              </p>
-              {[
-                "Tell us your goal",
-                "Choose a timeline",
-                "We reply with next steps",
-              ].map((line, index) => (
-                <div
-                  key={line}
-                  className="flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm hover-glow"
-                  style={{
-                    borderColor: "var(--panel-border)",
-                    backgroundColor: "var(--panel)",
-                    color: "var(--muted)",
-                  }}
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--teal)] text-xs font-semibold text-white icon-wiggle">
-                    {index + 1}
-                  </span>
-                  {line}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -107,80 +128,25 @@ export default function ContactPage() {
             <p className="eyebrow">FAQ</p>
             <h2 className="section-title">Quick answers before you reach out.</h2>
             <p className="text-base text-slate-700">
-              If you have a question that is not listed here, message us and we
-              will respond quickly.
+              These answers are written for practical buyers who want clarity before
+              committing to a call or proposal.
             </p>
           </div>
           <div className="space-y-3">
-            {[
-              {
-                title: "Startups",
-                items: [
-                  {
-                    q: "How fast can you build an MVP?",
-                    a: "Most MVPs launch in 6-10 weeks depending on features and integrations.",
-                  },
-                  {
-                    q: "Can you help refine the product before development?",
-                    a: "Yes. We run strategy and UX sessions to clarify goals, prioritize features, and define the roadmap.",
-                  },
-                ],
-              },
-              {
-                title: "Small Business",
-                items: [
-                  {
-                    q: "What does a typical website or app project cost?",
-                    a: "We scope the project first, then provide a fixed quote or phased milestone plan.",
-                  },
-                  {
-                    q: "Can you integrate payment, booking, or CRM tools?",
-                    a: "Absolutely. We can connect Stripe, PayFast, HubSpot, Calendly, and other tools you already use.",
-                  },
-                ],
-              },
-              {
-                title: "Enterprise / Large Clients",
-                items: [
-                  {
-                    q: "How do you handle security and access control?",
-                    a: "We design role-based access, audit logs, and secure hosting from the start.",
-                  },
-                  {
-                    q: "Can you work with our internal team and tooling?",
-                    a: "Yes. We integrate with your existing stack and keep communication transparent.",
-                  },
-                ],
-              },
-              {
-                title: "Website Only",
-                items: [
-                  {
-                    q: "Do you offer SEO and performance optimization?",
-                    a: "Yes. We build SEO-ready pages, fast load times, and clean technical structure.",
-                  },
-                  {
-                    q: "Can you redesign an existing site without downtime?",
-                    a: "Yes. We stage the rebuild, review with you, and switch over smoothly.",
-                  },
-                ],
-              },
-            ].map((group) => (
-              <div key={group.title} className="space-y-3">
+            {faqs.map((group) => (
+              <div key={group.group} className="space-y-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--teal)]">
-                  {group.title}
+                  {group.group}
                 </p>
                 {group.items.map((item) => (
                   <details key={item.q} className="panel p-5 hover-halo">
-                    <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-slate-900">
+                    <summary className="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-slate-900">
                       {item.q}
-                      <span className="faq-icon text-lg text-[color:var(--teal)]">
-                        +
-                      </span>
+                      <span className="faq-icon text-lg text-[color:var(--teal)]">+</span>
                     </summary>
                     <p className="mt-3 text-sm text-slate-600">{item.a}</p>
                     <a
-                      href="https://wa.me/27610884755"
+                      href={whatsappHref}
                       className="mt-3 inline-flex text-xs font-semibold text-[color:var(--teal)]"
                       target="_blank"
                       rel="noreferrer"
