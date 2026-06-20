@@ -21,24 +21,24 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Hikma Solutions | Software, Apps, and Websites",
+  title: "Hikma Solutions | Websites and Business Systems in Durban",
   description:
-    "Professional software development, app development, and website design from Durban, South Africa.",
+    "Durban-based website design and business systems for South African service businesses that need more enquiries and less manual admin.",
   icons: {
     icon: ["/favicon.ico", "/favicon-32x32.png", "/favicon-16x16.png"],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Hikma Solutions | Software, Apps, and Websites",
+    title: "Hikma Solutions | Websites and Business Systems in Durban",
     description:
-      "Professional software development, app development, and website design from Durban, South Africa.",
+      "Websites, dashboards, and prototypes for South African businesses that need leads and cleaner operations.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hikma Solutions | Software, Apps, and Websites",
+    title: "Hikma Solutions | Websites and Business Systems in Durban",
     description:
-      "Professional software development, app development, and website design from Durban, South Africa.",
+      "Lead-focused websites and practical business systems for South African service businesses.",
   },
 };
 
@@ -62,7 +62,7 @@ export default function RootLayout({
       addressLocality: "Durban",
       addressCountry: "ZA",
     },
-    areaServed: ["South Africa", "Worldwide"],
+    areaServed: ["South Africa"],
     serviceArea: "Durban",
     sameAs: [],
   };
@@ -103,7 +103,7 @@ export default function RootLayout({
                     <span>
                       <span className="block leading-tight">{siteConfig.name}</span>
                       <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--muted)]">
-                        Software. Apps. Websites.
+                        Websites. Systems. Prototypes.
                       </span>
                     </span>
                   </Link>
@@ -113,7 +113,7 @@ export default function RootLayout({
                       href="/services"
                       className="transition hover:text-[color:var(--ink)] nav-underline"
                     >
-                      Services
+                      Offers
                     </Link>
                     <Link
                       href="/about"
@@ -131,20 +131,22 @@ export default function RootLayout({
 
                   <div className="hidden items-center gap-3 md:flex">
                     <ThemeToggle />
-                    <Link
-                      href="/contact"
+                    <a
+                      href={`https://wa.me/${siteConfig.whatsapp}`}
                       className="btn-primary"
                       data-magnet
+                      target="_blank"
+                      rel="noreferrer"
                     >
-                      Start a Project
-                    </Link>
+                      WhatsApp
+                    </a>
                   </div>
                 </div>
 
                 <nav className="relative mt-4 flex items-center justify-between gap-5 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--muted)] md:hidden">
                   <div className="flex items-center gap-5">
                     <Link href="/services" className="hover:text-[color:var(--ink)]">
-                      Services
+                      Offers
                     </Link>
                     <Link href="/about" className="hover:text-[color:var(--ink)]">
                       About
@@ -178,13 +180,13 @@ export default function RootLayout({
                       </p>
                     </div>
                     <p className="max-w-sm text-sm">
-                      Product-focused software development for teams that need
-                      clear scope, practical timelines, and dependable delivery.
+                      Lead-focused websites and practical business systems for South
+                      African service businesses that need enquiries and cleaner operations.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="footer-chip">Durban based</span>
-                      <span className="footer-chip">Global clients</span>
-                      <span className="footer-chip">Weekly updates</span>
+                      <span className="footer-chip">Website rescue</span>
+                      <span className="footer-chip">Business systems</span>
                     </div>
                   </div>
 
@@ -196,7 +198,7 @@ export default function RootLayout({
                       Home
                     </Link>
                     <Link href="/services" className="footer-link">
-                      Services
+                      Offers
                     </Link>
                     <Link href="/about" className="footer-link">
                       About
@@ -208,19 +210,16 @@ export default function RootLayout({
 
                   <div className="space-y-3">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Services
+                      Offers
                     </p>
                     <p className="text-sm text-[color:var(--muted)]">
-                      Custom software
+                      Website rescue
                     </p>
                     <p className="text-sm text-[color:var(--muted)]">
-                      App development
+                      Business websites
                     </p>
                     <p className="text-sm text-[color:var(--muted)]">
-                      Website design
-                    </p>
-                    <p className="text-sm text-[color:var(--muted)]">
-                      Internal dashboards
+                      Operations prototypes
                     </p>
                   </div>
 
@@ -253,7 +252,7 @@ export default function RootLayout({
                   style={{ borderColor: "var(--panel-border)" }}
                 >
                   <p>(c) 2026 Hikma Solutions. All rights reserved.</p>
-                  <p>Built for clarity, speed, and business outcomes.</p>
+                  <p>Built for leads, clarity, and useful business outcomes.</p>
                 </div>
               </div>
             </footer>
