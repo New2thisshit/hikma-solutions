@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
+
 export const alt = "Redirect, a private porn blocker for Android. Coming soon to Google Play.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
