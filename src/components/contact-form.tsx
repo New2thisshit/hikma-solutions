@@ -12,171 +12,144 @@ type FormState = {
   message: string;
 };
 
+const services = [
+  "Website rescue",
+  "New business website",
+  "Business system or app",
+  "Security health check",
+  "Penetration test",
+  "Fix and harden a site",
+  "Monthly security cover",
+  "Not sure yet",
+];
+
+const timelines = [
+  "As soon as possible",
+  "Within a month",
+  "In 1–3 months",
+  "Just exploring",
+];
+
 const initialState: FormState = {
   name: "",
   email: "",
   company: "",
-  service: "Software Development",
-  timeline: "Within 1-2 months",
+  service: services[0],
+  timeline: timelines[1],
   message: "",
 };
 
-export default function ContactForm() {
-  const [form, setForm] = useState<FormState>(initialState);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
-  const [error, setError] = useState<string>("");
-
-  const composedMessage = useMemo(() => {
-    return [
-      "New Project Inquiry",
-      `Name: ${form.name || "-"}`,
-      `Email: ${form.email || "-"}`,
-      `Company: ${form.company || "-"}`,
-      `Service: ${form.service || "-"}`,
-      `Timeline: ${form.timeline || "-"}`,
-      "Message:",
-      form.message || "-",
-    ].join("\n");
-  }, [form]);
+export default function ContactForm({ defaultService }: { defaultService?: string }) {
+  const [form, setForm] = useState<FormState>({
+    ...initialState,
+    service: defaultService && services.includes(defaultService) ? defaultService : initialState.service,
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
   const whatsappUrl = useMemo(() => {
-    const encoded = encodeURIComponent(composedMessage);
-    return `https://wa.me/${siteConfig.whatsapp}?text=${encoded}`;
-  }, [composedMessage]);
+    const text = [
+      `Hi Hikma, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
+      `I need: ${form.service}`,
+      `Timeline: ${form.timeline}`,
+      "",
+      form.message || "",
+    ].join("\n");
+    return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(text)}`;
+  }, [form]);
 
-  const updateField = (field: keyof FormState) => (value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-  };
+  const update =
+    (field: keyof FormState) =>
+    (event: { target: { value: string } }) =>
+      setForm((prev) => ({ ...prev, [field]: event.target.value }));
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const sendWhatsApp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
-  const handleEmailSend = async () => {
+  const sendEmail = async () => {
+    if (!form.name || !form.email || !form.message) {
+      setStatus("error");
+      setError("Add your name, email and a short description, then send again.");
+      return;
+    }
     setStatus("sending");
     setError("");
-
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-
       if (!response.ok) {
         const payload = await response.json().catch(() => ({}));
-        throw new Error(payload?.error || "Something went wrong.");
+        throw new Error(payload?.error || "The email didn't send. Try WhatsApp instead.");
       }
-
       setStatus("sent");
       setForm(initialState);
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Unexpected error.");
+      setError(err instanceof Error ? err.message : "The email didn't send. Try WhatsApp instead.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 font-sans">
-      <div className="grid gap-4 md:grid-cols-2">
-        <label className="space-y-2 text-sm font-medium text-slate-700">
-          Full name
-          <input
-            className="w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-            placeholder="Your name"
-            value={form.name}
-            onChange={(event) => updateField("name")(event.target.value)}
-            required
-          />
+    <form onSubmit={sendWhatsApp} style={{ display: "grid", gap: "1.25rem" }}>
+      <div style={{ display: "grid", gap: "1.25rem", gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))" }}>
+        <label className="field">
+          Your name
+          <input value={form.name} onChange={update("name")} autoComplete="name" required />
         </label>
-        <label className="space-y-2 text-sm font-medium text-slate-700">
-          Email address
-          <input
-            className="w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-            type="email"
-            placeholder="you@company.com"
-            value={form.email}
-            onChange={(event) => updateField("email")(event.target.value)}
-            required
-          />
+        <label className="field">
+          Email
+          <input type="email" value={form.email} onChange={update("email")} autoComplete="email" required />
         </label>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
-        <label className="space-y-2 text-sm font-medium text-slate-700">
-          Company (optional)
-          <input
-            className="w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-            placeholder="Company name"
-            value={form.company}
-            onChange={(event) => updateField("company")(event.target.value)}
-          />
+      <label className="field">
+        <span>
+          Business name <span className="muted" style={{ fontWeight: 400 }}>(optional)</span>
+        </span>
+        <input value={form.company} onChange={update("company")} autoComplete="organization" />
+      </label>
+      <div style={{ display: "grid", gap: "1.25rem", gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))" }}>
+        <label className="field">
+          What do you need?
+          <select value={form.service} onChange={update("service")}>
+            {services.map((s) => (
+              <option key={s}>{s}</option>
+            ))}
+          </select>
         </label>
-        <label className="space-y-2 text-sm font-medium text-slate-700">
-          Service needed
-          <select
-            className="w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-            value={form.service}
-            onChange={(event) => updateField("service")(event.target.value)}
-          >
-            <option>Custom software / internal tool</option>
-            <option>Mobile app (iOS / Android)</option>
-            <option>Website design / marketing site</option>
-            <option>Product redesign / UX refresh</option>
-            <option>API integrations / automation</option>
-            <option>Not sure yet</option>
+        <label className="field">
+          When?
+          <select value={form.timeline} onChange={update("timeline")}>
+            {timelines.map((t) => (
+              <option key={t}>{t}</option>
+            ))}
           </select>
         </label>
       </div>
-      <label className="space-y-2 text-sm font-medium text-slate-700">
-        Ideal timeline
-        <select
-          className="w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-          value={form.timeline}
-          onChange={(event) => updateField("timeline")(event.target.value)}
-        >
-          <option>ASAP (within 2-4 weeks)</option>
-          <option>1-2 months</option>
-          <option>3-4 months</option>
-          <option>6+ months</option>
-          <option>Just exploring</option>
-        </select>
-      </label>
-      <label className="space-y-2 text-sm font-medium text-slate-700">
-        Project details
+      <label className="field">
+        Tell us about it
         <textarea
-          className="min-h-[140px] w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--teal)]"
-          placeholder="Tell us about your goals, features, and timeline."
           value={form.message}
-          onChange={(event) => updateField("message")(event.target.value)}
+          onChange={update("message")}
+          placeholder="Your website address, what's not working, or what you want built."
           required
         />
       </label>
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <button type="submit" className="btn-primary">
-          Send via WhatsApp
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem" }}>
+        <button type="submit" className="btn btn-saffron">
+          Send on WhatsApp
         </button>
-        <button
-          type="button"
-          className="btn-outline"
-          onClick={handleEmailSend}
-          disabled={status === "sending"}
-        >
-          {status === "sending" ? "Sending..." : "Send via Email"}
+        <button type="button" className="btn btn-line" onClick={sendEmail} disabled={status === "sending"}>
+          {status === "sending" ? "Sending email…" : "Send by email"}
         </button>
       </div>
-      {status === "sent" ? (
-        <p className="text-xs text-emerald-700">
-          Thanks! Your message was sent successfully.
-        </p>
-      ) : null}
-      {status === "error" ? (
-        <p className="text-xs text-rose-600">{error}</p>
-      ) : null}
-      <p className="text-xs text-slate-500">
-        WhatsApp opens in a new tab. Email sends directly through our system.
+      <p role="status" aria-live="polite" style={{ margin: 0, fontWeight: 600 }}>
+        {status === "sent" ? "Email sent. We'll reply to the address you gave." : null}
+        {status === "error" ? <span style={{ color: "var(--danger)" }}>{error}</span> : null}
       </p>
     </form>
   );

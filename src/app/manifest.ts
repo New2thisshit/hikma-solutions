@@ -6,8 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Hikma",
     start_url: "/",
     display: "standalone",
-    background_color: "#f6f9fb",
-    theme_color: "#1ea6a3",
+    background_color: "#f5f6f2",
+    theme_color: "#1c2245",
     icons: [
       {
         src: "/android-chrome-192x192.png",

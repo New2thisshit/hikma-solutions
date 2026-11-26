@@ -1,15 +1,30 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
+export const alt = "Hikma Solutions: open to your customers, closed to everyone else.";
+export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+function star(cx: number, cy: number, r: number) {
+  const inner = r * 0.7654;
+  const pts: string[] = [];
+  for (let i = 0; i < 16; i++) {
+    const rad = i % 2 === 0 ? r : inner;
+    const a = (Math.PI / 8) * i - Math.PI / 2;
+    pts.push(`${cx + rad * Math.cos(a)},${cy + rad * Math.sin(a)}`);
+  }
+  return pts.join(" ");
+}
+
 export default function OpenGraphImage() {
+  const stars: { x: number; y: number; r: number }[] = [];
+  for (let row = 0; row <= 10; row++) {
+    for (let col = 0; col <= 8; col++) {
+      stars.push({ x: col * 64, y: row * 64, r: 30 });
+      stars.push({ x: col * 64 + 32, y: row * 64 + 32, r: 12.6 });
+    }
+  }
+
   return new ImageResponse(
     (
       <div
@@ -17,82 +32,43 @@ export default function OpenGraphImage() {
           width: "1200px",
           height: "630px",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          background:
-            "linear-gradient(135deg, #f7fbfb 0%, #dff1f1 50%, #cbe9f5 100%)",
-          padding: "80px",
+          background: "#1c2245",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <p
-            style={{
-              fontSize: "20px",
-              letterSpacing: "0.4em",
-              textTransform: "uppercase",
-              color: "#1ea6a3",
-              margin: 0,
-            }}
-          >
-            Hikma Solutions
-          </p>
-          <h1
-            style={{
-              fontSize: "56px",
-              lineHeight: 1.1,
-              color: "#0a1a24",
-              margin: 0,
-              maxWidth: "640px",
-            }}
-          >
-            Software, apps, and websites that launch with clarity.
-          </h1>
-          <p style={{ fontSize: "22px", color: "#4b5a65", margin: 0 }}>
-            Durban, South Africa - Serving clients worldwide
-          </p>
-        </div>
         <div
           style={{
-            width: "200px",
-            height: "200px",
-            borderRadius: "48px",
-            backgroundColor: "#0f2a36",
+            width: "700px",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "72px",
           }}
         >
-          <div style={{ display: "flex", gap: "14px", position: "relative" }}>
-            <div
-              style={{
-                width: "38px",
-                height: "120px",
-                backgroundColor: "#7ee0d4",
-                borderRadius: "14px",
-              }}
-            />
-            <div
-              style={{
-                width: "38px",
-                height: "120px",
-                backgroundColor: "#1ea6a3",
-                borderRadius: "14px",
-              }}
-            />
-            <div
-              style={{
-                width: "52px",
-                height: "18px",
-                backgroundColor: "#8ecaf2",
-                borderRadius: "10px",
-                position: "absolute",
-                left: "34px",
-                top: "36px",
-              }}
-            />
-          </div>
+          <p style={{ fontSize: "30px", color: "#f4a51c", margin: 0, fontWeight: 700 }}>
+            Hikma Solutions
+          </p>
+          <h1 style={{ fontSize: "68px", lineHeight: 1.05, color: "#eef0f7", margin: 0 }}>
+            Open to your customers. Closed to everyone else.
+          </h1>
+          <p style={{ fontSize: "26px", color: "#aab0cc", margin: 0 }}>
+            Websites, business systems and security testing · Durban
+          </p>
         </div>
+        <svg width="500" height="630" viewBox="0 0 500 630">
+          <defs>
+            <radialGradient id="g" gradientUnits="userSpaceOnUse" cx="300" cy="220" r="480">
+              <stop offset="0" stopColor="#fff1c9" />
+              <stop offset="0.16" stopColor="#ffd27a" />
+              <stop offset="0.42" stopColor="#f4a51c" />
+              <stop offset="1" stopColor="#252c55" />
+            </radialGradient>
+          </defs>
+          <rect width="500" height="630" fill="#161b3a" />
+          {stars.map((s, i) => (
+            <polygon key={i} points={star(s.x, s.y, s.r)} fill="url(#g)" />
+          ))}
+        </svg>
       </div>
     ),
     size
