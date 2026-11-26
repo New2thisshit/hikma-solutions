@@ -940,3 +940,55 @@ a.offer-row:hover .offer-row__name {
   display: inline-block;
   margin-top: 1rem;
 }
+
+/* ---------- Review fixes ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--indigo-line);
+  background: #161b3a;
+}
+.footer-grid ul a {
+  display: inline-block;
+  padding-block: 0.2rem;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 37.5rem) {
+  .hero .jali {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+.legal {
+  max-width: 44rem;
+}
+.legal h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+}
+.legal h2:first-child {
+  margin-top: 0;
+}
+.legal p,
+.legal li {
+  color: var(--muted);
+}
+.legal ul {
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.legal strong {
+  color: var(--ink);
+}
+.jali {
+  border-radius: 14px;
+  overflow: hidden;
+}

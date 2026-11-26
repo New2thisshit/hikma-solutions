@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const whatsappHref = whatsappLink("Hi Hikma, here's what I need help with: ");
+  const whatsappHref = whatsappLink("Hi Hikma, here’s what I need help with: ");
 
   return (
     <>
@@ -41,11 +41,11 @@ export default function ContactPage() {
           </div>
           <div style={{ display: "grid", gap: "2.5rem", alignContent: "start" }}>
             <div>
-              <h3 className="h3">What happens next</h3>
+              <h2 className="h3">What happens next</h2>
               <ol className="steps" style={{ ["--cols" as string]: 1, marginTop: "1.5rem", gap: "1.5rem" }}>
                 <li>
-                  <h3>I read it and look at your site</h3>
-                  <p className="muted">Before I reply, so my answer is actually useful.</p>
+                  <h3>I read it properly</h3>
+                  <p className="muted">And look at your site first, if you have one.</p>
                 </li>
                 <li>
                   <h3>I tell you what I&rsquo;d do</h3>
@@ -58,7 +58,7 @@ export default function ContactPage() {
               </ol>
             </div>
             <div>
-              <h3 className="h3">Where I am</h3>
+              <h2 className="h3">Where I am</h2>
               <p className="muted" style={{ marginTop: "0.75rem" }}>
                 Durban. I work with businesses all over South Africa online, and can
                 meet in person around KZN.

@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     icon: ["/favicon.ico", "/favicon-32x32.png", "/favicon-16x16.png"],
     apple: "/apple-touch-icon.png",
   },
+  alternates: { canonical: "./" },
   openGraph: {
     title: "Hikma Solutions",
     description: "I build your website. Then I try to hack it.",
@@ -128,7 +129,7 @@ export default function RootLayout({
               <h2>Security</h2>
               <ul>
                 <li><Link href="/security#health-check">Security check</Link></li>
-                <li><Link href="/security#pentest">Pen test</Link></li>
+                <li><Link href="/security#pentest">Break-in test</Link></li>
                 <li><Link href="/security#hardening">Fix and lock down</Link></li>
                 <li><Link href="/security#watch">Monthly check-up</Link></li>
               </ul>
@@ -148,7 +149,10 @@ export default function RootLayout({
           </div>
           <div className="wrap footer-base">
             <p style={{ margin: 0 }}>© {new Date().getFullYear()} {siteConfig.legalName}</p>
-            <p style={{ margin: 0 }}>I only test systems with the owner&rsquo;s written permission.</p>
+            <p style={{ margin: 0 }}>
+              I only test systems with the owner&rsquo;s written permission.{" "}
+              <Link href="/privacy">Privacy</Link>
+            </p>
           </div>
         </footer>
       </body>

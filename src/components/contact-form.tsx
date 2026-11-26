@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from "react";
 import { siteConfig } from "@/lib/site";
 
 type FormState = {
+  website: string;
   name: string;
   email: string;
   company: string;
@@ -17,7 +18,7 @@ const services = [
   "New website",
   "Replace a spreadsheet with an app",
   "Security check",
-  "Pen test",
+  "Break-in test (pen test)",
   "Fix security problems",
   "Monthly check-up",
   "Not sure yet",
@@ -31,6 +32,7 @@ const timelines = [
 ];
 
 const initialState: FormState = {
+  website: "",
   name: "",
   email: "",
   company: "",
@@ -49,7 +51,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
   const whatsappUrl = useMemo(() => {
     const text = [
-      `Hi Hikma, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
+      `Hi Hikma, I’m ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
       `I need: ${form.service}`,
       `Timeline: ${form.timeline}`,
       "",
@@ -84,26 +86,32 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
       });
       if (!response.ok) {
         const payload = await response.json().catch(() => ({}));
-        throw new Error(payload?.error || "The email didn't send. Try WhatsApp instead.");
+        throw new Error(payload?.error || "That didn’t send. Please WhatsApp me instead.");
       }
       setStatus("sent");
       setForm(initialState);
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "The email didn't send. Try WhatsApp instead.");
+      setError(err instanceof Error ? err.message : "That didn’t send. Please WhatsApp me instead.");
     }
   };
 
   return (
     <form onSubmit={sendWhatsApp} style={{ display: "grid", gap: "1.25rem" }}>
+      <label className="hp-field" aria-hidden="true">
+        Leave this empty
+        <input tabIndex={-1} autoComplete="off" value={form.website} onChange={update("website")} />
+      </label>
       <div style={{ display: "grid", gap: "1.25rem", gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))" }}>
         <label className="field">
           Your name
           <input value={form.name} onChange={update("name")} autoComplete="name" required />
         </label>
         <label className="field">
-          Email
-          <input type="email" value={form.email} onChange={update("email")} autoComplete="email" required />
+          <span>
+          Email <span className="muted" style={{ fontWeight: 400 }}>(only needed to send by email)</span>
+        </span>
+          <input type="email" value={form.email} onChange={update("email")} autoComplete="email" />
         </label>
       </div>
       <label className="field">
@@ -135,7 +143,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
         <textarea
           value={form.message}
           onChange={update("message")}
-          placeholder="Your website address, what's not working, or what you want built."
+          placeholder="Your website address, what’s not working, or what you want built."
           required
         />
       </label>
@@ -147,8 +155,11 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
           {status === "sending" ? "Sending email…" : "Send by email"}
         </button>
       </div>
+      <p className="muted" style={{ margin: 0, fontSize: "0.9375rem" }}>
+        I only use your details to reply. <a className="text-link" href="/privacy">Privacy</a>
+      </p>
       <p role="status" aria-live="polite" style={{ margin: 0, fontWeight: 600 }}>
-        {status === "sent" ? "Sent. I'll reply to the email address you gave." : null}
+        {status === "sent" ? "Sent. I’ll reply to the email address you gave." : null}
         {status === "error" ? <span style={{ color: "var(--danger)" }}>{error}</span> : null}
       </p>
     </form>

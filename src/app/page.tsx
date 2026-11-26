@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "I build websites and business tools for South African businesses, then I try to hack them before anyone else does. Hikma Solutions, Durban.",
 };
 
-const whatsappHref = whatsappLink("Hi Hikma, here's my website: ");
+const whatsappHref = whatsappLink("Hi Hikma, here’s my website: ");
 
 export default function Home() {
   return (
@@ -32,6 +32,9 @@ export default function Home() {
                 How the hacking part works
               </Link>
             </div>
+            <p className="muted" style={{ marginTop: "1rem" }}>
+              No website yet? WhatsApp me anyway.
+            </p>
           </div>
           <Jali animate />
         </div>
@@ -92,7 +95,7 @@ export default function Home() {
             <div className="hero__actions">
               <a
                 className="btn btn-saffron"
-                href={whatsappLink("Hi Hikma, I'd like a security check for: ")}
+                href={whatsappLink("Hi Hikma, I’d like a security check for: ")}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -121,7 +124,6 @@ export default function Home() {
               goes live. One person, one WhatsApp number, and nothing gets lost
               between two companies.
             </p>
-            <p className="note__sign">Hikma Solutions</p>
           </div>
         </div>
       </section>
@@ -148,7 +150,7 @@ export default function Home() {
             </li>
             <li>
               <h3>You get the keys</h3>
-              <p className="muted">All logins in your name. I stay on call if you want.</p>
+              <p className="muted">All logins in your name. Monthly support if you want it.</p>
             </li>
           </ol>
         </div>

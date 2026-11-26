@@ -10,18 +10,18 @@ export const metadata: Metadata = {
     "Security checks, pen tests, fixes and monthly check-ups for South African small businesses, explained in plain English. Based in Durban.",
   openGraph: {
     title: "Cyber security for small businesses | Hikma Solutions",
-    description: "I try to hack your website, so a stranger can't.",
+    description: "I try to hack your website, so a stranger can’t.",
   },
 };
 
 const reasons = [
   {
-    title: "It's usually not personal",
-    copy: "Bots scan millions of websites a day, looking for old plugins and weak passwords. They don't care how big you are. If your site has a gap, they find it.",
+    title: "It’s usually not personal",
+    copy: "Bots scan millions of websites a day, looking for old plugins and weak passwords. They don’t care how big you are. If your site has a gap, they find it.",
   },
   {
     title: "Scammers can pretend to be you",
-    copy: "If your email isn't set up properly, anyone can send an email that looks like it came from you, asking your clients to pay into a new bank account.",
+    copy: "If your email isn’t set up properly, anyone can send an email that looks like it came from you, asking your clients to pay into a new bank account.",
   },
   {
     title: "The law expects you to try",
@@ -33,20 +33,21 @@ const rules = [
   "I only test what you own, after you say yes in writing.",
   "We agree when I test, and you can reach me the whole time.",
   "What I find goes to you and nobody else.",
-  "I delete your data when the job's done.",
+  "Happy to sign your NDA. You get a one-page testing agreement before anything starts.",
+  "I delete any of your data I collected once the job’s done. You keep the report.",
 ];
 
 const faqs = [
   {
     q: "Which one do I need?",
-    a: "If your site is mostly information and a contact form, start with a security check. If customers log in, pay, or upload things, you need a pen test.",
+    a: "If your site is mostly information and a contact form, start with a security check. If customers log in, pay, or upload things, you need a break-in test."
   },
   {
     q: "Will you break my website?",
-    a: "A security check only looks from the outside, so no. A pen test is planned with you, done at agreed times, and I stay away from anything that could damage your data. Where I can, I test a copy of your site instead of the real one.",
+    a: "Very unlikely. A security check only looks from the outside, the way any visitor would. A break-in test is planned with you and done at agreed times, and I avoid anything that could damage your data. Where I can, I test a copy of your site. Before we start, I’ll check you have a recent backup.",
   },
   {
-    q: "Can you check a site you didn't build?",
+    q: "Can you check a site you didn’t build?",
     a: "Yes. You just need to own it, or have written permission from whoever does.",
   },
   {
@@ -55,12 +56,12 @@ const faqs = [
   },
   {
     q: "What do you need from me?",
-    a: "Your website address and a contact person. For a pen test, I'll also need test logins and a signed letter saying what I'm allowed to test.",
+    a: "Your website address and a contact person. For a break-in test, I’ll also need test logins and a signed letter saying what I’m allowed to test.",
   },
 ];
 
 export default function SecurityPage() {
-  const ask = whatsappLink("Hi Hikma, I'd like to talk about security for: ");
+  const ask = whatsappLink("Hi Hikma, I’d like to talk about security for: ");
 
   return (
     <>
@@ -164,7 +165,8 @@ export default function SecurityPage() {
             </p>
             <p className="muted prose-measure">
               I also hunt for bugs on HackerOne and YesWeHack, where companies pay
-              people to find holes in their apps. It keeps me sharp.
+              people to find holes in their apps. That&rsquo;s where I keep learning
+              how real attacks work.
             </p>
           </div>
           <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem", fontWeight: 600 }}>

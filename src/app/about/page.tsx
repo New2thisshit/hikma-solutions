@@ -9,22 +9,10 @@ export const metadata: Metadata = {
 };
 
 const principles = [
-  {
-    title: "Your problem first",
-    copy: "Not enough calls? Too much admin? Worried about hackers? We start there, not with what technology to use.",
-  },
-  {
-    title: "Small first",
-    copy: "I'd rather build something small that works this month than something huge that's late.",
-  },
-  {
-    title: "You always know what's happening",
-    copy: "You get an update from me every week: what's done, what's next, and anything I need from you.",
-  },
-  {
-    title: "It's yours",
-    copy: "Your domain, hosting and logins are in your name. If you ever move on, the next developer can pick up where I left off.",
-  },
+  "We start with your problem, not with which technology to use.",
+  "I build something small that works first, then we grow it.",
+  "You get an update from me every week.",
+  "Your domain, hosting and logins are in your name. If you ever leave, the next developer can carry on.",
 ];
 
 export default function AboutPage() {
@@ -32,11 +20,11 @@ export default function AboutPage() {
     <>
       <section className="band-dark page-hero">
         <div className="wrap">
-          <h1 className="display h1" style={{ maxWidth: "48rem" }}>Hi. I&rsquo;m the one who&rsquo;ll build your site.</h1>
+          <h1 className="display h1" style={{ maxWidth: "48rem" }}>A small studio in Durban.</h1>
           <p className="lede muted" style={{ marginTop: "1.5rem" }}>
-            I run Hikma Solutions from Durban. I build websites and business tools
-            for South African businesses, and I try to hack them before anyone
-            else can. When you message Hikma, you get me.
+            I build websites and business tools for South African businesses, and
+            I check them for security. When you message Hikma, the person who
+            answers is the person who does the work.
           </p>
         </div>
       </section>
@@ -66,16 +54,13 @@ export default function AboutPage() {
       </section>
 
       <section className="section band-sunk">
-        <div className="wrap">
+        <div className="wrap split">
           <h2 className="display h2">How I work</h2>
-          <div className="reasons reasons--two">
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem" }}>
             {principles.map((p) => (
-              <div key={p.title}>
-                <h3 className="h3">{p.title}</h3>
-                <p className="muted" style={{ marginTop: "0.75rem" }}>{p.copy}</p>
-              </div>
+              <li key={p}>{p}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -99,7 +84,7 @@ export default function AboutPage() {
           <div className="hero__actions" style={{ marginTop: 0 }}>
             <a
               className="btn btn-saffron"
-              href={whatsappLink("Hi Hikma, here's what's going on: ")}
+              href={whatsappLink("Hi Hikma, here’s what’s going on: ")}
               target="_blank"
               rel="noreferrer"
             >
