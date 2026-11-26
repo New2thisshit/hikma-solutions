@@ -143,20 +143,67 @@ export const securityOffers: Offer[] = [
   },
 ];
 
-export const work = [
+export type WorkLink = { label: string; href: string };
+
+export type WorkItem = {
+  slug: string;
+  kind: string;
+  title: string;
+  copy: string;
+  image?: string;
+  imageAlt?: string;
+  links: WorkLink[];
+};
+
+export const redirectApp = {
+  title: "Redirect",
+  tagline: "A porn blocker that helps in the moment.",
+  copy: "My own Android app. When an urge shows up, Redirect gives you a 90-second pause, then the plan you wrote on a calmer day. Blocking known adult sites is optional. No account, no streaks, no ads.",
+  icon: "/work/redirect-icon.png",
+  screens: [
+    { src: "/work/redirect-home.webp", alt: "Redirect home screen" },
+    { src: "/work/redirect-breathe.webp", alt: "Redirect 90-second breathing pause" },
+    { src: "/work/redirect-redirect.webp", alt: "Redirect screen shown when a blocked site is opened" },
+  ],
+  links: [
+    { label: "Get it on Google Play", href: "https://play.google.com/store/apps/details?id=com.redirect.app" },
+    { label: "Visit the website", href: "https://redirect.hikmasolutions.co.za" },
+  ],
+};
+
+export const work: WorkItem[] = [
   {
-    kind: "Demo",
-    title: "Fleet logbook and inspection app",
-    copy: "Drivers fill in trip logs and vehicle checks on their phones. Supervisors approve them. No more paper.",
+    slug: "sa-radio",
+    kind: "Live",
+    title: "SA Radio and Podcasts",
+    copy: "94 South African radio stations on one dial. Turn the dial or search, then press play. No app, no sign-up.",
+    image: "/work/sa-radio.webp",
+    imageAlt: "SA Radio and Podcasts home page with the FM dial",
+    links: [{ label: "Try the radio dial", href: "https://www.saradioandpodcasts.co.za" }],
   },
   {
+    slug: "fleet",
+    kind: "Client work",
+    title: "Fleet logbook and inspection app",
+    copy: "I’m building this for a health NGO with vehicles across a province. Drivers do their checks on a phone, and supervisors see every car in one place. No more paper logbooks. Try a small version of it.",
+    links: [{ label: "Try the demo", href: "/work#fleet-demo" }],
+  },
+  {
+    slug: "odes",
+    kind: "Website",
+    title: "Odirilejwang Enterprise",
+    copy: "A website for a Durban HR consultancy: services, training, and a clear way to book a consultation.",
+    image: "/work/odes.webp",
+    imageAlt: "Odirilejwang Enterprise website home page",
+    links: [{ label: "See the site", href: "https://odes-website.vercel.app" }],
+  },
+  {
+    slug: "precision",
     kind: "Demo",
     title: "Panel beater website",
-    copy: "Before-and-after repair photos, insurer approvals and a quick quote button.",
-  },
-  {
-    kind: "Live",
-    title: "SA Radio and Podcasts directory",
-    copy: "A searchable list of South African radio stations and podcasts.",
+    copy: "A demo site for a made-up Cape Town panel beater. Before-and-after slider, insurer approvals, and quotes from a WhatsApp photo.",
+    image: "/work/precision-auto-craft.webp",
+    imageAlt: "Precision Auto Craft demo website home page",
+    links: [{ label: "See the demo", href: "https://precision-auto-craft.vercel.app" }],
   },
 ];

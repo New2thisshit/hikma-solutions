@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Jali from "@/components/jali";
 import SampleReport from "@/components/sample-report";
-import { buildOffers, securityOffers, whatsappLink, work } from "@/lib/site";
+import WorkCard from "@/components/work-card";
+import { buildOffers, redirectApp, securityOffers, whatsappLink, work } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Hikma Solutions | Websites and cyber security in Durban",
@@ -160,18 +162,38 @@ export default function Home() {
         <div className="wrap">
           <h2 className="display h2">Things I&rsquo;ve built</h2>
           <p className="muted prose-measure" style={{ marginTop: "1rem" }}>
-            Demos are marked as demos. Client work goes up here once the client
-            says it&rsquo;s okay.
+            Open them, click around. Demos are marked as demos.
           </p>
-          <ul className="work-list">
-            {work.map((w) => (
-              <li key={w.title}>
-                <span className="work-tag">{w.kind}</span>
-                <span style={{ fontWeight: 700, fontSize: "1.125rem" }}>{w.title}</span>
-                <span className="muted">{w.copy}</span>
-              </li>
+
+          <div className="redirect-strip">
+            <Image src={redirectApp.icon} alt="" width={64} height={64} />
+            <div>
+              <p style={{ margin: 0 }}>
+                <strong>{redirectApp.title}.</strong> {redirectApp.tagline}
+              </p>
+              <p className="muted" style={{ margin: "0.25rem 0 0" }}>
+                My own Android app, live on Google Play.
+              </p>
+            </div>
+            <div className="redirect-strip__links">
+              {redirectApp.links.map((l) => (
+                <a key={l.href} className="text-link" href={l.href} target="_blank" rel="noreferrer">
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="work-grid">
+            {work.map((item) => (
+              <WorkCard key={item.slug} item={item} />
             ))}
-          </ul>
+          </div>
+          <p style={{ marginTop: "2rem" }}>
+            <Link className="text-link" href="/work">
+              See all my work and try the fleet demo
+            </Link>
+          </p>
         </div>
       </section>
 

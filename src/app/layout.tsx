@@ -133,6 +133,11 @@ export default function RootLayout({
                 <li><Link href="/security#hardening">Fix and lock down</Link></li>
                 <li><Link href="/security#watch">Monthly check-up</Link></li>
               </ul>
+              <h2 style={{ marginTop: "1.75rem" }}>Work</h2>
+              <ul>
+                <li><Link href="/work">Things I&rsquo;ve built</Link></li>
+                <li><a href="https://redirect.hikmasolutions.co.za" target="_blank" rel="noreferrer">Redirect app</a></li>
+              </ul>
             </div>
             <div>
               <h2>Talk to me</h2>
