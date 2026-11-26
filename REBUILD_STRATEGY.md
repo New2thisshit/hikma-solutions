@@ -1,32 +1,55 @@
-# Hikma Solutions rebuild strategy
+# Hikma Solutions — "Jali" redesign (Nov 2026)
 
-This branch rebuilds the website around a sharper conversion strategy.
+## Concept
 
-## Core sales problem
+A jali is the carved lattice screen of Islamic and Indian architecture: it lets
+light and air in while keeping prying eyes out: easy for customers to use, hard
+for anyone else to get into. The headline line is **"I build your website. Then
+I try to hack it."** It ties the two halves of the business together:
 
-The previous site looked credible but generic. It sold broad categories: software, apps, and websites. The rebuild moves the offer closer to the buyer's actual pain: outdated websites, low enquiries, spreadsheets, WhatsApp chaos, and manual admin.
+- **Build**: websites and business systems that win enquiries and cut admin.
+- **Secure**: health checks, penetration testing, hardening and monthly cover.
 
-## Primary positioning
+## Voice
 
-Websites and business systems for South African service businesses that need more enquiries and less manual admin.
+- First person, but no personal name on the site. The owner talks to the reader: "I", "you", "we" only for the two of you.
+- Short sentences and everyday words. Explain any technical term the first time.
+- Say what happens, not how great it is. No hype words.
 
-## Offer ladder
+## Design tokens
 
-1. Website Rescue Sprint: low-risk entry offer for businesses with weak existing websites.
-2. Business Website Build: complete lead-focused site for local service companies.
-3. Operations System Prototype: internal dashboard or workflow prototype for spreadsheet-heavy teams.
+| Token | Value | Use |
+| --- | --- | --- |
+| Indigo | `#1c2245` | Hero bands, header, footer |
+| Saffron | `#f4a51c` | Primary buttons, the lit lattice, focus ring |
+| Ground | `#f5f6f2` | Page background |
+| Ground sunk | `#e9ebe4` | Alternate sections |
+| Ink | `#161a33` | Body text on light |
+| Muted | `#535a77` | Secondary text on light |
 
-## Conversion changes
+Type: **Unbounded** (wide geometric display, sentence case) + **Hanken Grotesk**
+(body). Both are self-hosted from `src/fonts` (OFL licence files included), so
+builds don't depend on Google Fonts.
 
-- Hero now names the buyer and business outcome.
-- Primary CTA points to WhatsApp with a concrete action.
-- Services are productized with price anchors.
-- Fake-looking proof is replaced with honest portfolio/demo proof.
-- Homepage introduces niche landing page directions.
-- Copy prioritizes pain, speed, trust, and visible deliverables.
+The lattice (`src/components/jali.tsx`) is the one memorable element. It
+animates once on the home page; everything else stays quiet. Reduced motion is
+respected.
 
-## Next work
+## Where to edit content
 
-- Add real screenshots from portfolio/demo builds.
-- Add 3 niche landing pages: panel beaters, construction companies, and fleet/operations dashboards.
-- Add analytics events for WhatsApp clicks and form submissions.
+- Prices, offers and work items: `src/lib/site.ts`
+- Sample security report: `src/components/sample-report.tsx`
+
+## Pages
+
+`/` home · `/services` build offers · `/security` cyber security (new) ·
+`/about` · `/contact`
+
+## Security research (added Nov 2026)
+
+- `/research`: focus areas, methodology, AI use, honest track record, case-study structure.
+- `/responsible-disclosure`: policy for research conduct and for reports about our own products.
+- `/.well-known/security.txt`: points to the policy. Renew `Expires` before 2027-11-26.
+- Content lives in `src/lib/research.ts`. Only add facts that can be backed up. Add a
+  case study only when the program's disclosure rules allow it.
+- CIPC registration number: set `registrationNumber` in `src/lib/site.ts`.

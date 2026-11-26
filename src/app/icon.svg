@@ -1,6 +1,5 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="16" fill="#0F2A36"/>
-  <rect x="20" y="16" width="10" height="32" fill="#7EE0D4"/>
-  <rect x="34" y="16" width="10" height="32" fill="#1EA6A3"/>
-  <rect x="30" y="28" width="8" height="6" fill="#8ECAF2"/>
+  <rect width="64" height="64" rx="12" fill="#F4A51C"/>
+  <polygon points="32,8 39,15 49,15 49,25 56,32 49,39 49,49 39,49 32,56 25,49 15,49 15,39 8,32 15,25 15,15 25,15" fill="#1C2245"/>
+  <rect x="25" y="25" width="14" height="14" fill="#F4A51C" transform="rotate(45 32 32)"/>
 </svg>

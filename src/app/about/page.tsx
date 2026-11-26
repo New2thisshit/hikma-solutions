@@ -1,188 +1,184 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
+import { redirectApp, siteConfig, whatsappLink } from "@/lib/site";
+import { researchStatus } from "@/lib/research";
 
-const principles = [
-  {
-    title: "Business problem first",
-    copy: "A website, dashboard, or app only matters if it solves a real commercial problem: more leads, less admin, faster decisions, or clearer reporting.",
-  },
-  {
-    title: "Small useful version first",
-    copy: "We avoid oversized builds. The first version should create a visible win before the project expands.",
-  },
-  {
-    title: "Clear communication",
-    copy: "You should always know what is being built, what is blocked, what changed, and what decision is needed next.",
-  },
-];
-
-const focusAreas = [
-  {
-    title: "Websites that sell the business",
-    copy: "Lead-focused pages for service businesses that need stronger trust, clearer offers, and better enquiry flow.",
-  },
-  {
-    title: "Dashboards and internal tools",
-    copy: "Systems for teams that are still relying on spreadsheets, paper forms, email chains, or WhatsApp coordination.",
-  },
-  {
-    title: "MVP prototypes",
-    copy: "Practical product concepts that turn broad app ideas into realistic first builds with clear scope.",
-  },
-];
-
-const proofRoadmap = [
-  "Publish honest portfolio demos with screenshots and build notes.",
-  "Create niche pages for panel beaters, construction companies, and fleet/operations teams.",
-  "Turn each completed client project into a proof page with problem, solution, screenshots, and outcome.",
-];
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "About | Hikma Solutions",
   description:
-    "About Hikma Solutions, a Durban-based studio building lead-focused websites, dashboards, and practical prototypes for South African businesses.",
-  openGraph: {
-    title: "About | Hikma Solutions",
-    description:
-      "Hikma Solutions builds websites and business systems for South African service businesses that need leads and cleaner operations.",
-  },
+    "Hikma Solutions is a small Durban studio that builds websites and business tools for South African businesses, and tests them for security.",
 };
+
+const principles = [
+  "We start with your problem, not with which technology to use.",
+  "I build something small that works first, then we grow it.",
+  "You get an update from me every week.",
+  "Your domain, hosting and logins are in your name. If you ever leave, the next developer can carry on.",
+];
 
 export default function AboutPage() {
   return (
-    <div>
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 pt-10">
-        <p className="eyebrow">About</p>
-        <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
-          A small Durban studio for practical websites and business systems.
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700">
-          Hikma Solutions is based in {siteConfig.location}. The focus is simple:
-          help South African businesses turn messy digital presence, manual admin,
-          and vague app ideas into clear, useful systems.
-        </p>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-        <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-center">
-          <div className="space-y-4">
-            <p className="eyebrow">Positioning</p>
-            <h2 className="section-title">Not another generic software agency.</h2>
-            <p className="text-base leading-relaxed text-slate-700">
-              The work is aimed at operators, founders, and local service businesses
-              that need something useful built without agency confusion or vague
-              freelancer delivery.
-            </p>
-          </div>
-          <div className="panel relative overflow-hidden p-6">
-            <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-[color:var(--aqua)] opacity-40 blur-2xl float-slow" />
-            <div className="relative space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Best-fit work
-              </p>
-              {[
-                "Website rescue and rebuilds",
-                "Business websites for service companies",
-                "Internal dashboards and workflow tools",
-                "MVP scoping and prototype builds",
-              ].map((line, index) => (
-                <div
-                  key={line}
-                  className="flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm hover-glow"
-                  style={{
-                    borderColor: "var(--panel-border)",
-                    backgroundColor: "var(--panel)",
-                    color: "var(--muted)",
-                  }}
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--teal)] text-xs font-semibold text-white icon-wiggle">
-                    {index + 1}
-                  </span>
-                  {line}
-                </div>
-              ))}
-            </div>
-          </div>
+    <>
+      <section className="band-dark page-hero">
+        <div className="wrap">
+          <h1 className="display h1" style={{ maxWidth: "48rem" }}>A small software studio in Durban.</h1>
+          <p className="lede muted" style={{ marginTop: "1.5rem" }}>
+            I build custom software, mobile apps and websites for South African
+            businesses, test them for security, and do independent security
+            research. When you message Hikma, the person who answers is the person
+            who does the work.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-        <div className="grid gap-6 md:grid-cols-3">
-          {principles.map((value) => (
-            <div key={value.title} className="panel p-6 hover-glow fade-up hover-halo">
-              <h3 className="text-lg font-semibold text-slate-900">{value.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{value.copy}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20">
-        <div className="grid gap-8 md:grid-cols-[0.95fr_1.05fr]">
-          <div className="space-y-4">
-            <p className="eyebrow">Focus</p>
-            <h2 className="section-title">The work should create a visible business improvement.</h2>
-            <p className="text-base leading-relaxed text-slate-700">
-              Design quality matters, but the business outcome matters more. Hikma
-              should be judged by clearer offers, easier enquiries, cleaner workflows,
-              and software that people can actually use.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {focusAreas.map((item) => (
-              <div key={item.title} className="panel p-5 hover-halo">
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.copy}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20">
-        <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
-          <div className="space-y-4">
-            <p className="eyebrow">Proof</p>
-            <h2 className="section-title">Proof must be visible and honest.</h2>
-            <p className="text-base leading-relaxed text-slate-700">
-              This rebuild intentionally removes weak testimonial-style proof. Until
-              there are verified client stories, the site should use honest portfolio
-              demos, screenshots, live links, build notes, and transparent case studies.
-            </p>
-          </div>
-          <div className="panel space-y-4 p-6 hover-glow hover-halo">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-              Proof roadmap
-            </p>
-            <ul className="space-y-3 text-sm text-slate-600">
-              {proofRoadmap.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--teal)]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-6 pb-24">
-        <div className="panel flex flex-col items-start justify-between gap-6 p-8 md:flex-row md:items-center hover-glow hover-halo">
+      <section className="section">
+        <div className="wrap split">
           <div>
-            <p className="eyebrow">Next step</p>
-            <h2 className="mt-3 text-2xl font-semibold text-slate-900">
-              Start with the messy problem, not a polished brief.
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Send the site, spreadsheet, paper process, or app idea and we will
-              recommend the smallest useful first step.
+            <h2 className="display h2">The name</h2>
+            <p style={{ marginTop: "1.25rem", fontSize: "1.125rem" }} className="prose-measure">
+              Hikma is Arabic for wisdom. To me that means building what you
+              actually need, not the biggest thing I can sell you.
             </p>
           </div>
-          <Link href="/contact" className="btn-primary" data-magnet>
-            Contact Hikma
-          </Link>
+          <div>
+            <h2 className="display h2">The pattern</h2>
+            <p style={{ marginTop: "1.25rem", fontSize: "1.125rem" }} className="prose-measure">
+              The star pattern on this site comes from the jali, a carved screen
+              used in Islamic and Indian buildings. It lets light and air in, and
+              keeps people from seeing inside.
+            </p>
+            <p className="muted prose-measure">
+              That&rsquo;s what I want for your business online: easy for customers
+              to find and use, hard for anyone else to get into.
+            </p>
+          </div>
         </div>
       </section>
-    </div>
+
+      <section className="section band-sunk">
+        <div className="wrap split">
+          <h2 className="display h2">How I work</h2>
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem" }}>
+            {principles.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap split">
+          <div>
+            <h2 className="display h2">What you can check</h2>
+            <p className="prose-measure" style={{ marginTop: "1.25rem", fontSize: "1.125rem" }}>
+              No testimonials or big claims here. Just things you can open and look
+              at yourself.
+            </p>
+          </div>
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.0625rem" }}>
+            <li>
+              <span>
+              <a className="text-link" href={redirectApp.links[0].href} target="_blank" rel="noreferrer">
+                Redirect
+              </a>
+              , my own Android app, live on Google Play
+              </span>
+            </li>
+            <li>
+              <span>
+              <a className="text-link" href="https://www.saradioandpodcasts.co.za" target="_blank" rel="noreferrer">
+                SA Radio and Podcasts
+              </a>
+              , a live site streaming 94 South African stations
+              </span>
+            </li>
+            <li>
+              <span>
+              A fleet inspection app in development for a health NGO.{" "}
+              <Link className="text-link" href="/work#fleet-demo">Try the demo</Link>
+              </span>
+            </li>
+            <li>
+              <span>
+              Bug bounty research on {researchStatus.platforms.join(" and ")} since{" "}
+              {researchStatus.started}, with an{" "}
+              <Link className="text-link" href="/research#status">honest track record</Link>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="section band-sunk">
+        <div className="wrap split">
+          <h2 className="display h2">Company details</h2>
+          <dl className="field-list">
+            <div>
+              <dt>Registered name</dt>
+              <dd>{siteConfig.legalName}</dd>
+            </div>
+            <div>
+              <dt>Registration</dt>
+              <dd>
+                Private company registered with the CIPC in South Africa,{" "}
+                {siteConfig.registeredYear}
+                {siteConfig.registrationNumber ? `. Reg. no. ${siteConfig.registrationNumber}` : ""}
+              </dd>
+            </div>
+            <div>
+              <dt>Based in</dt>
+              <dd>{siteConfig.location}</dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd>
+                <a className="text-link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+                <br />
+                WhatsApp {siteConfig.phone}
+              </dd>
+            </div>
+            <div>
+              <dt>Security contact</dt>
+              <dd>
+                See the <Link className="text-link" href="/responsible-disclosure">disclosure policy</Link>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap split">
+          <h2 className="display h2">Who I work with</h2>
+          <ul className="check-list" style={{ alignContent: "center", fontWeight: 600, fontSize: "1.125rem" }}>
+            <li>Panel beaters, accountants, clinics and other local businesses</li>
+            <li>Teams running their day on spreadsheets and WhatsApp groups</li>
+            <li>People with an app idea who need help making it real</li>
+            <li>Anyone holding customer data who wants to know it&rsquo;s safe</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="band-dark section">
+        <div className="wrap" style={{ display: "grid", gap: "2rem" }}>
+          <h2 className="display h2" style={{ maxWidth: "44rem" }}>
+            You don&rsquo;t need a plan. Just tell me what&rsquo;s going wrong.
+          </h2>
+          <div className="hero__actions" style={{ marginTop: 0 }}>
+            <a
+              className="btn btn-saffron"
+              href={whatsappLink("Hi Hikma, here’s what’s going on: ")}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp me
+            </a>
+            <Link className="btn btn-line" href="/contact">
+              Or fill in a form
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
