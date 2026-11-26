@@ -1295,3 +1295,130 @@ a.offer-row:hover .offer-row__name {
     grid-column: 1 / -1;
   }
 }
+
+/* ---------- Research pages ---------- */
+
+.band-dark .split > * + * {
+  border-left-color: var(--indigo-line);
+}
+
+.jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.jump-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.9rem;
+  border: 1.5px solid var(--indigo-line);
+  border-radius: 999px;
+  color: var(--on-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.jump-links a:hover {
+  border-color: var(--saffron);
+  color: var(--saffron);
+}
+
+.status-card {
+  align-self: center;
+}
+.status-card__list {
+  margin: 0;
+  padding: 0.5rem 1.5rem 1.25rem;
+}
+.status-card__list > div {
+  display: grid;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+.status-card__list > div:last-child {
+  border-bottom: 0;
+}
+@media (min-width: 36rem) {
+  .status-card__list > div {
+    grid-template-columns: 8rem 1fr;
+  }
+}
+.status-card__list dt {
+  font-weight: 700;
+}
+.status-card__list dd {
+  margin: 0;
+  color: var(--muted);
+}
+.status-card__list ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.focus-grid {
+  display: grid;
+  gap: 2.25rem 3rem;
+  margin-top: 2.75rem;
+}
+@media (min-width: 48rem) {
+  .focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 72rem) {
+  .focus-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.focus-grid > div {
+  border-top: 1.5px solid var(--ink);
+  padding-top: 1.1rem;
+}
+
+.steps--grid {
+  --cols: 3;
+  row-gap: 2.5rem;
+}
+
+.empty-note {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  max-width: 44rem;
+}
+
+.field-list {
+  margin: 0;
+  align-self: center;
+}
+.field-list > div {
+  display: grid;
+  gap: 0.2rem 1.5rem;
+  padding-block: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+.field-list > div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 36rem) {
+  .field-list > div {
+    grid-template-columns: 10rem 1fr;
+  }
+}
+.field-list dt {
+  font-weight: 700;
+}
+.field-list dd {
+  margin: 0;
+  color: var(--muted);
+}
+.check-list li > span a {
+  white-space: nowrap;
+}
+.status-card__list ul {
+  list-style: disc;
+}

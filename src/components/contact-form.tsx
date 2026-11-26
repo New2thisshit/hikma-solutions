@@ -16,7 +16,8 @@ type FormState = {
 const services = [
   "Fix my website",
   "New website",
-  "Replace a spreadsheet with an app",
+  "Mobile app",
+  "Custom software (replace a spreadsheet)",
   "Security check",
   "Break-in test (pen test)",
   "Fix security problems",

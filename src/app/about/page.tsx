@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { whatsappLink } from "@/lib/site";
+import { redirectApp, siteConfig, whatsappLink } from "@/lib/site";
+import { researchStatus } from "@/lib/research";
 
 export const metadata: Metadata = {
   title: "About | Hikma Solutions",
@@ -20,11 +21,12 @@ export default function AboutPage() {
     <>
       <section className="band-dark page-hero">
         <div className="wrap">
-          <h1 className="display h1" style={{ maxWidth: "48rem" }}>A small studio in Durban.</h1>
+          <h1 className="display h1" style={{ maxWidth: "48rem" }}>A small software studio in Durban.</h1>
           <p className="lede muted" style={{ marginTop: "1.5rem" }}>
-            I build websites and business tools for South African businesses, and
-            I check them for security. When you message Hikma, the person who
-            answers is the person who does the work.
+            I build custom software, mobile apps and websites for South African
+            businesses, test them for security, and do independent security
+            research. When you message Hikma, the person who answers is the person
+            who does the work.
           </p>
         </div>
       </section>
@@ -61,6 +63,87 @@ export default function AboutPage() {
               <li key={p}>{p}</li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap split">
+          <div>
+            <h2 className="display h2">What you can check</h2>
+            <p className="prose-measure" style={{ marginTop: "1.25rem", fontSize: "1.125rem" }}>
+              No testimonials or big claims here. Just things you can open and look
+              at yourself.
+            </p>
+          </div>
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.0625rem" }}>
+            <li>
+              <span>
+              <a className="text-link" href={redirectApp.links[0].href} target="_blank" rel="noreferrer">
+                Redirect
+              </a>
+              , my own Android app, live on Google Play
+              </span>
+            </li>
+            <li>
+              <span>
+              <a className="text-link" href="https://www.saradioandpodcasts.co.za" target="_blank" rel="noreferrer">
+                SA Radio and Podcasts
+              </a>
+              , a live site streaming 94 South African stations
+              </span>
+            </li>
+            <li>
+              <span>
+              A fleet inspection app in development for a health NGO.{" "}
+              <Link className="text-link" href="/work#fleet-demo">Try the demo</Link>
+              </span>
+            </li>
+            <li>
+              <span>
+              Bug bounty research on {researchStatus.platforms.join(" and ")} since{" "}
+              {researchStatus.started}, with an{" "}
+              <Link className="text-link" href="/research#status">honest track record</Link>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="section band-sunk">
+        <div className="wrap split">
+          <h2 className="display h2">Company details</h2>
+          <dl className="field-list">
+            <div>
+              <dt>Registered name</dt>
+              <dd>{siteConfig.legalName}</dd>
+            </div>
+            <div>
+              <dt>Registration</dt>
+              <dd>
+                Private company registered with the CIPC in South Africa,{" "}
+                {siteConfig.registeredYear}
+                {siteConfig.registrationNumber ? `. Reg. no. ${siteConfig.registrationNumber}` : ""}
+              </dd>
+            </div>
+            <div>
+              <dt>Based in</dt>
+              <dd>{siteConfig.location}</dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd>
+                <a className="text-link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+                <br />
+                WhatsApp {siteConfig.phone}
+              </dd>
+            </div>
+            <div>
+              <dt>Security contact</dt>
+              <dd>
+                See the <Link className="text-link" href="/responsible-disclosure">disclosure policy</Link>
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
 

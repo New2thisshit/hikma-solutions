@@ -1,6 +1,9 @@
 export const siteConfig = {
   name: "Hikma Solutions",
   legalName: "HIKMA SOLUTIONS (Pty) Ltd",
+  // CIPC registration number, e.g. "2026/123456/07". Shown in the footer and About page when set.
+  registrationNumber: "",
+  registeredYear: "2026",
   location: "Durban, South Africa",
   email: "contact@hikmasolutions.co.za",
   phone: "+27 61 088 4755",
@@ -25,6 +28,39 @@ export type Offer = {
  * Keep the language simple: short sentences, everyday words.
  */
 export const buildOffers: Offer[] = [
+  // Order: custom software, mobile, web. Groups for the services page are below.
+  {
+    slug: "systems",
+    name: "Replace the spreadsheet",
+    price: "From R15,000",
+    timeline: "1 to 3 weeks",
+    summary:
+      "Your team runs on paper forms, spreadsheets or a busy WhatsApp group. I turn that into a clickable test version your team can try. Then you get a fixed quote for the real app.",
+    includes: [
+      "We sit down and map how the work happens now",
+      "A clickable version your team can test",
+      "Who sees what, and what gets saved",
+      "A list of what goes in version one",
+      "A fixed quote for building the real thing",
+    ],
+    ask: "Hi Hikma, I want to get this off a spreadsheet: ",
+  },
+  {
+    slug: "mobile-app",
+    name: "Mobile app",
+    price: "Quoted per project",
+    timeline: "Depends on scope",
+    summary:
+      "Android apps, from idea to Google Play. If you need Android and iPhone, I build one cross-platform app with React Native.",
+    includes: [
+      "We cut the idea down to a first version worth launching",
+      "A clickable prototype before the real build",
+      "Built, tested and published to Google Play",
+      "Accounts and offline use where you need them",
+      "Security tested before launch",
+    ],
+    ask: "Hi Hikma, I have an app idea: ",
+  },
   {
     slug: "website-rescue",
     name: "Fix my website",
@@ -57,21 +93,30 @@ export const buildOffers: Offer[] = [
     ],
     ask: "Hi Hikma, I need a new website for my business: ",
   },
+];
+
+export const serviceGroups = [
   {
-    slug: "systems",
-    name: "Replace the spreadsheet",
-    price: "From R15,000",
-    timeline: "1 to 3 weeks",
-    summary:
-      "Your team runs on paper forms, spreadsheets or a busy WhatsApp group. I turn that into a clickable test version your team can try. Then you get a fixed quote for the real app.",
-    includes: [
-      "We sit down and map how the work happens now",
-      "A clickable version your team can test",
-      "Who sees what, and what gets saved",
-      "A list of what goes in version one",
-      "A fixed quote for building the real thing",
-    ],
-    ask: "Hi Hikma, I want to get this off a spreadsheet: ",
+    slug: "software",
+    title: "Custom software",
+    intro:
+      "Business systems for teams running on paper, spreadsheets or WhatsApp groups: dashboards, forms, approvals and reports.",
+    proof: { label: "Example: fleet inspection app (in development)", href: "/work#fleet-demo" },
+    offers: ["systems"],
+  },
+  {
+    slug: "mobile",
+    title: "Mobile apps",
+    intro: "Android apps, and cross-platform apps when you need iPhone too.",
+    proof: { label: "Example: Redirect, live on Google Play", href: "/work" },
+    offers: ["mobile-app"],
+  },
+  {
+    slug: "web",
+    title: "Websites",
+    intro: "Fast, clear websites for service businesses, with security set up from day one.",
+    proof: { label: "Example: SA Radio and Podcasts", href: "https://www.saradioandpodcasts.co.za" },
+    offers: ["website-rescue", "website-build"],
   },
 ];
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Jali from "@/components/jali";
 import OfferDetail from "@/components/offer-detail";
 import SampleReport from "@/components/sample-report";
@@ -164,9 +165,9 @@ export default function SecurityPage() {
               should know exactly how I work.
             </p>
             <p className="muted prose-measure">
-              I also hunt for bugs on HackerOne and YesWeHack, where companies pay
-              people to find holes in their apps. That&rsquo;s where I keep learning
-              how real attacks work.
+              I also do bug bounty research on HackerOne and YesWeHack, where
+              companies invite people to find holes in their apps.{" "}
+              <Link className="text-link" href="/research">See how I research</Link>.
             </p>
           </div>
           <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem", fontWeight: 600 }}>

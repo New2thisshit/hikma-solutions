@@ -4,15 +4,16 @@ import Image from "next/image";
 import Jali from "@/components/jali";
 import SampleReport from "@/components/sample-report";
 import WorkCard from "@/components/work-card";
+import { researchStatus } from "@/lib/research";
 import { buildOffers, redirectApp, securityOffers, whatsappLink, work } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Hikma Solutions | Websites and cyber security in Durban",
+  title: "Hikma Solutions | Software, mobile apps and security research in Durban",
   description:
-    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does. Hikma Solutions, Durban.",
+    "Hikma Solutions is a Durban software studio. Custom software, mobile apps and websites for South African businesses, security testing, and authorised security research.",
 };
 
-const whatsappHref = whatsappLink("Hi Hikma, here’s my website: ");
+const whatsappHref = whatsappLink("Hi Hikma, I’d like to talk about a project: ");
 
 export default function Home() {
   return (
@@ -20,23 +21,20 @@ export default function Home() {
       <section className="band-dark hero">
         <div className="wrap hero__grid">
           <div>
-            <h1 className="display h1">I build your website. Then I try to hack it.</h1>
+            <h1 className="display h1">I build software. Then I try to break it.</h1>
             <p className="lede muted" style={{ marginTop: "1.75rem" }}>
-              Hikma Solutions is my studio in Durban. I make
-              websites and business tools that bring in customers, and I check
-              they&rsquo;re safe before a hacker does.
+              Hikma Solutions is a software studio in Durban. I build business
+              systems, mobile apps and websites, test them the way an attacker
+              would, and do independent security research.
             </p>
             <div className="hero__actions">
               <a className="btn btn-saffron" href={whatsappHref} target="_blank" rel="noreferrer">
-                WhatsApp me your website
+                WhatsApp me about a project
               </a>
-              <Link className="btn btn-line" href="/security">
-                How the hacking part works
+              <Link className="btn btn-line" href="/research">
+                Security research
               </Link>
             </div>
-            <p className="muted" style={{ marginTop: "1rem" }}>
-              No website yet? WhatsApp me anyway.
-            </p>
           </div>
           <Jali animate />
         </div>
@@ -109,21 +107,54 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section band-sunk">
+        <div className="wrap split">
+          <div>
+            <h2 className="display h2">Security research</h2>
+            <p className="prose-measure" style={{ marginTop: "1.25rem", fontSize: "1.125rem" }}>
+              Separate from client work, I look for security flaws in bug bounty
+              programs on {researchStatus.platforms.join(" and ")}, with permission
+              and within each program&rsquo;s rules.
+            </p>
+            <p className="muted prose-measure">
+              It&rsquo;s early. {researchStatus.summary} The research page shows the
+              method, the honest track record and how case studies will be
+              published.
+            </p>
+            <div className="hero__actions" style={{ marginTop: "1.5rem" }}>
+              <Link className="btn btn-ink" href="/research">
+                How I do research
+              </Link>
+              <Link className="btn btn-line" href="/responsible-disclosure">
+                Disclosure policy
+              </Link>
+            </div>
+          </div>
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem", fontWeight: 600 }}>
+            <li>Access control and login flaws in web apps and APIs</li>
+            <li>Business-logic bugs that scanners miss</li>
+            <li>Source-code review</li>
+            <li>AI-assisted, with every finding checked by hand</li>
+            <li>Private, coordinated reporting only</li>
+          </ul>
+        </div>
+      </section>
+
       <section className="section">
         <div className="wrap note">
           <h2 className="display h2">Why I do both</h2>
           <div className="note__body">
             <p>
-              A good-looking website doesn&rsquo;t help you much if someone can walk
+              Good-looking software doesn&rsquo;t help you much if someone can walk
               in through the back door.
             </p>
             <p>
-              Most web designers never test for that. Most security companies
-              don&rsquo;t build websites, and their prices are made for big companies.
+              Most developers never test for that. Most security companies
+              don&rsquo;t build software, and their prices are made for big companies.
             </p>
             <p>
-              So I do both. I build your site, then I attack it myself before it
-              goes live. One person, one WhatsApp number, and nothing gets lost
+              So I do both. I build your system, app or site, then I attack it
+              myself before it goes live. One person, one WhatsApp number, and nothing gets lost
               between two companies.
             </p>
           </div>

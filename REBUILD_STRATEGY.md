@@ -44,3 +44,12 @@ respected.
 
 `/` home · `/services` build offers · `/security` cyber security (new) ·
 `/about` · `/contact`
+
+## Security research (added Nov 2026)
+
+- `/research`: focus areas, methodology, AI use, honest track record, case-study structure.
+- `/responsible-disclosure`: policy for research conduct and for reports about our own products.
+- `/.well-known/security.txt`: points to the policy. Renew `Expires` before 2027-11-26.
+- Content lives in `src/lib/research.ts`. Only add facts that can be backed up. Add a
+  case study only when the program's disclosure rules allow it.
+- CIPC registration number: set `registrationNumber` in `src/lib/site.ts`.

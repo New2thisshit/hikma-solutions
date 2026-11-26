@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ContactForm from "@/components/contact-form";
 import { siteConfig, whatsappLink } from "@/lib/site";
 
@@ -56,6 +57,17 @@ export default function ContactPage() {
                   <p className="muted">For security work, that includes your signed OK to test.</p>
                 </li>
               </ol>
+            </div>
+            <div>
+              <h2 className="h3">Found a security issue?</h2>
+              <p className="muted" style={{ marginTop: "0.75rem" }}>
+                If you&rsquo;ve found a vulnerability in this site or the Redirect app,
+                please follow the{" "}
+                <Link className="text-link" href="/responsible-disclosure#report-to-us">
+                  disclosure policy
+                </Link>
+                .
+              </p>
             </div>
             <div>
               <h2 className="h3">Where I am</h2>

@@ -25,9 +25,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hikmasolutions.co.z
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Hikma Solutions | Websites and cyber security in Durban",
+  title: "Hikma Solutions | Software, mobile apps and security research in Durban",
   description:
-    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does.",
+    "A Durban software studio: custom software, mobile apps and websites, security testing, and authorised security research.",
   icons: {
     icon: ["/favicon.ico", "/favicon-32x32.png", "/favicon-16x16.png"],
     apple: "/apple-touch-icon.png",
@@ -72,10 +72,11 @@ export default function RootLayout({
     },
     areaServed: "ZA",
     knowsAbout: [
-      "Website design",
-      "Web application development",
-      "Penetration testing",
-      "Website security",
+      "Custom software development",
+      "Mobile app development",
+      "Web development",
+      "Application security",
+      "Security research",
     ],
   };
 
@@ -113,16 +114,16 @@ export default function RootLayout({
                 <span style={{ color: "var(--on-dark)" }}>Hikma Solutions</span>
               </Link>
               <p className="muted" style={{ maxWidth: "22rem", marginTop: "1.25rem" }}>
-                A small studio in Durban. Websites and business tools for
-                South African businesses, tested for security before they go live.
+                A small software studio in Durban. Custom software, mobile apps and
+                websites, plus security testing and authorised security research.
               </p>
             </div>
             <div>
-              <h2>Websites</h2>
+              <h2>Services</h2>
               <ul>
-                <li><Link href="/services#website-rescue">Fix my website</Link></li>
-                <li><Link href="/services#website-build">New website</Link></li>
-                <li><Link href="/services#systems">Replace the spreadsheet</Link></li>
+                <li><Link href="/services#software">Custom software</Link></li>
+                <li><Link href="/services#mobile">Mobile apps</Link></li>
+                <li><Link href="/services#web">Websites</Link></li>
               </ul>
             </div>
             <div>
@@ -133,10 +134,11 @@ export default function RootLayout({
                 <li><Link href="/security#hardening">Fix and lock down</Link></li>
                 <li><Link href="/security#watch">Monthly check-up</Link></li>
               </ul>
-              <h2 style={{ marginTop: "1.75rem" }}>Work</h2>
+              <h2 style={{ marginTop: "1.75rem" }}>Research</h2>
               <ul>
-                <li><Link href="/work">Things I&rsquo;ve built</Link></li>
-                <li><a href="https://redirect.hikmasolutions.co.za" target="_blank" rel="noreferrer">Redirect app</a></li>
+                <li><Link href="/research">Security research</Link></li>
+                <li><Link href="/responsible-disclosure">Disclosure policy</Link></li>
+                <li><a href="/.well-known/security.txt">security.txt</a></li>
               </ul>
             </div>
             <div>
@@ -150,10 +152,18 @@ export default function RootLayout({
                 <li><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
                 <li className="muted">{siteConfig.location}</li>
               </ul>
+              <h2 style={{ marginTop: "1.75rem" }}>Work</h2>
+              <ul>
+                <li><Link href="/work">Things I&rsquo;ve built</Link></li>
+                <li><a href="https://redirect.hikmasolutions.co.za" target="_blank" rel="noreferrer">Redirect app</a></li>
+              </ul>
             </div>
           </div>
           <div className="wrap footer-base">
-            <p style={{ margin: 0 }}>© {new Date().getFullYear()} {siteConfig.legalName}</p>
+            <p style={{ margin: 0 }}>
+              © {new Date().getFullYear()} {siteConfig.legalName}
+              {siteConfig.registrationNumber ? `, reg. no. ${siteConfig.registrationNumber}` : ""}. Registered in South Africa.
+            </p>
             <p style={{ margin: 0 }}>
               I only test systems with the owner&rsquo;s written permission.{" "}
               <Link href="/privacy">Privacy</Link>
