@@ -103,16 +103,127 @@ export const caseStudyFields = [
   { label: "What I learned", copy: "What I’d do differently next time." },
 ];
 
+export type CaseStudySection = { heading: string; body: string[]; code?: string };
+
 export type CaseStudy = {
   slug: string;
   title: string;
   date: string;
+  kind: string;
+  target: string;
   vulnClass: string;
+  severity: string;
   outcome: string;
   disclosure: string;
   summary: string;
-  link?: string;
+  sections: CaseStudySection[];
+  learned: string[];
 };
 
-/* Add case studies here only once a program's disclosure rules allow it. */
-export const caseStudies: CaseStudy[] = [];
+/*
+ * Add case studies here only once a program's disclosure rules allow it.
+ * Reviews of our own systems can be published once any issue is fixed.
+ */
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: "contact-form-abuse-controls",
+    title: "A contact form anyone could use to flood our inbox",
+    date: "November 2026",
+    kind: "Review of our own system",
+    target: "The contact form API on hikmasolutions.co.za (Next.js route that sends email through a Gmail account)",
+    vulnClass: "Missing rate limiting and input limits (resource abuse)",
+    severity: "Medium (self-assessed, CVSS 3.1 base 5.3: AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L)",
+    outcome: "Fixed in the site redesign, retested",
+    disclosure: "Our own system. Published after the fix.",
+    summary:
+      "The form’s API sent an email for every request it received, with no limit on how many, how fast, or how big. A simple script could flood our inbox and use up the sending account’s daily limit, so real enquiries would stop arriving.",
+    sections: [
+      {
+        heading: "How it was found",
+        body: [
+          "Code review of the API route, asking one question: what stops someone calling this directly, without the form, thousands of times?",
+          "The route only checked that name, email and message were not empty. There was no rate limit, no size limit, no bot check, and no error handling around the email send.",
+          "I also checked whether a visitor could add extra recipients by putting line breaks into the subject or reply-to fields (email header injection).",
+        ],
+      },
+      {
+        heading: "Validation",
+        body: [
+          "I tested on a local copy of the production code, not the live site, because testing live would have sent real emails.",
+          "30 requests in a row all reached the email-sending step. A 1 MB message was accepted and passed to the mailer. A failed send crashed the request with an unhandled error.",
+          "Header injection did not work. The mail library (Nodemailer 7) strips line breaks from headers, so no extra recipients could be added. The route only ever sends to one fixed inbox, so it was never an open relay.",
+        ],
+        code: `Before the fix (30 POST requests to /api/contact)
+  30 x 500  (31 send attempts in the server log)
+  1 MB message -> accepted and sent to the mailer
+
+After the fix (same test)
+   5 x 502  (send attempted; no mail server in the test sandbox)
+  25 x 429  "Too many messages. Please try again later, or WhatsApp me."`,
+      },
+      {
+        heading: "Impact",
+        body: [
+          "Anyone on the internet, with no account, could flood one inbox and burn through the Gmail account’s daily sending limit. Real enquiries would then fail without anyone noticing, and the account could be flagged for spam.",
+          "No data was exposed and nobody else could be emailed, which is why this is rated Medium and not higher.",
+        ],
+      },
+      {
+        heading: "The fix",
+        body: [
+          "A hidden honeypot field that bots fill in and people don’t.",
+          "A limit of 5 messages per IP address every 10 minutes. On Vercel the client IP header is set by the platform and can’t be spoofed by the sender.",
+          "Length limits on every field, a proper email format check, and a try/catch around the send that returns a clear message instead of a crash.",
+        ],
+      },
+    ],
+    learned: [
+      "The limit is kept in memory, so each server instance counts separately. It stops casual abuse, not a determined attacker spreading requests across many IPs. A shared store or a CAPTCHA would be the next step if abuse ever shows up.",
+      "Any endpoint that triggers something with a real cost, like sending email, needs a limit from day one.",
+    ],
+  },
+  {
+    slug: "redirect-attack-surface-review",
+    title: "Can another app or web page switch off Redirect’s blocking?",
+    date: "November 2026",
+    kind: "Review of our own system",
+    target: "Redirect for Android: deep links, exported components, DNS packet handling and blocklist updates",
+    vulnClass: "Attack surface review (no vulnerability found)",
+    severity: "None found. Two informational notes.",
+    outcome: "No changes needed. Notes recorded for future releases.",
+    disclosure: "Our own system.",
+    summary:
+      "Redirect blocks adult sites with an on-device DNS filter. The main risk for an app like this is another app, a web page, or a malformed network packet turning protection off without the user’s say. I reviewed the code paths that could allow that and found none.",
+    sections: [
+      {
+        heading: "What was reviewed",
+        body: [
+          "Every component the Android manifest exposes to other apps, and every redirect:// link the app accepts.",
+          "The VPN service’s DNS and IPv4/UDP packet parsers, and what happens to a query they can’t read.",
+          "How the blocklist is downloaded, checked and swapped in.",
+          "This was a source-code review with the existing unit tests. It has not yet been repeated on a physical device.",
+        ],
+      },
+      {
+        heading: "What I found",
+        body: [
+          "Links: any app or web page can open a redirect:// link, including the one for the \u201cturn off blocking\u201d screen. That link only opens a confirmation, so the user still has to agree. Above the Gentle protection level, turning blocking off also waits out the user’s cooldown, and during hard hours it can’t be requested at all. A link alone can’t switch protection off.",
+          "Components: the VPN, accessibility and Quick Settings services are protected by system-only permissions, so other apps can’t start, stop or bind to them. The broadcast receivers aren’t exported.",
+          "Packets: the DNS parser rejects compressed names, oversized labels, unexpected characters and non-standard queries. Anything it can’t read is dropped, not forwarded, so a malformed query can’t slip past the filter.",
+          "Blocklist updates: HTTPS only, including after redirects, with a 32 MB cap enforced while reading, a minimum size, and, when the new list comes from the same source, a check that it still contains most of the current one before it replaces it.",
+        ],
+      },
+      {
+        heading: "Informational notes",
+        body: [
+          "The blocklist comes from a third-party host and is trusted because of HTTPS alone, with no signature. The overlap check limits how much a bad list could remove, but signing our own copy would be stronger.",
+          "The limits already stated in the app’s documentation still apply: custom encrypted DNS, IPv6 DNS and DNS over TCP aren’t filtered.",
+        ],
+      },
+    ],
+    learned: [
+      "Routing every disabling action through one function that applies the cooldown made the review simple: there was only one door to check.",
+      "A review that finds nothing is still worth writing up when it says exactly what was checked and what wasn’t.",
+    ],
+  },
+];

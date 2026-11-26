@@ -1422,3 +1422,75 @@ a.offer-row:hover .offer-row__name {
 .status-card__list ul {
   list-style: disc;
 }
+
+/* ---------- Case studies ---------- */
+
+.case-study {
+  display: grid;
+  gap: 3rem;
+}
+@media (min-width: 60rem) {
+  .case-study {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+  .case-study__facts {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+.case-study .field-list > div {
+  grid-template-columns: 1fr;
+}
+.case-study__body {
+  max-width: 40rem;
+}
+.case-study__body section + section {
+  margin-top: 2.5rem;
+}
+.case-study__body p {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+}
+.case-study__code {
+  margin: 1.25rem 0 0;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: var(--indigo);
+  color: var(--on-dark);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.case-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 48rem) {
+  .case-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.case-list a {
+  display: grid;
+  gap: 0.6rem;
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+}
+.case-list a:hover h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--saffron);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.2em;
+}
+.case-study__facts {
+  align-self: start;
+}

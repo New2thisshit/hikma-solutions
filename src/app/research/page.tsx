@@ -146,37 +146,35 @@ export default function ResearchPage() {
       <section id="portfolio" className="section" style={{ scrollMarginTop: "1rem" }}>
         <div className="wrap">
           <h2 className="display h2">Research portfolio</h2>
-          {caseStudies.length === 0 ? (
-            <div className="empty-note">
-              <p style={{ margin: 0, fontWeight: 700 }}>No case studies published yet.</p>
-              <p className="muted" style={{ margin: "0.5rem 0 0" }}>
-                Duplicate reports usually can&rsquo;t be written up, because the
-                issue belongs to the researcher who found it first and the program
-                controls disclosure. Case studies will appear here once a program
-                allows one to be published.
-              </p>
-            </div>
-          ) : (
-            <ul className="work-list">
+          <p className="muted prose-measure" style={{ marginTop: "1rem" }}>
+            Reviews of systems I own, written up after any issue was fixed. Each one
+            says what was checked, what was found, and what wasn&rsquo;t tested.
+          </p>
+          {caseStudies.length > 0 ? (
+            <ul className="case-list">
               {caseStudies.map((c) => (
                 <li key={c.slug}>
-                  <span className="work-tag">{c.outcome}</span>
-                  <span style={{ fontWeight: 700, fontSize: "1.125rem" }}>
-                    {c.link ? (
-                      <a className="text-link" href={c.link} target="_blank" rel="noreferrer">
-                        {c.title}
-                      </a>
-                    ) : (
-                      c.title
-                    )}
-                  </span>
-                  <span className="muted">
-                    {c.date}. {c.vulnClass}. {c.summary} {c.disclosure}
-                  </span>
+                  <Link href={`/research/case-studies/${c.slug}`}>
+                    <span className="work-tag">{c.kind}</span>
+                    <h3 className="h3">{c.title}</h3>
+                    <span className="muted">{c.summary}</span>
+                    <span style={{ fontWeight: 600 }}>
+                      {c.severity.split(" (")[0]}. {c.outcome}.
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
-          )}
+          ) : null}
+          <div className="empty-note">
+            <p style={{ margin: 0, fontWeight: 700 }}>No bug bounty write-ups yet.</p>
+            <p className="muted" style={{ margin: "0.5rem 0 0" }}>
+              My bug bounty reports so far were duplicates, and those usually
+              can&rsquo;t be written up: the issue belongs to the researcher who found
+              it first, and the program controls disclosure. Bug bounty case studies
+              will appear here once a program allows one to be published.
+            </p>
+          </div>
 
           <div className="split" style={{ marginTop: "3.5rem" }}>
             <div>
