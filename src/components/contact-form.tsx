@@ -13,13 +13,13 @@ type FormState = {
 };
 
 const services = [
-  "Website rescue",
-  "New business website",
-  "Business system or app",
-  "Security health check",
-  "Penetration test",
-  "Fix and harden a site",
-  "Monthly security cover",
+  "Fix my website",
+  "New website",
+  "Replace a spreadsheet with an app",
+  "Security check",
+  "Pen test",
+  "Fix security problems",
+  "Monthly check-up",
   "Not sure yet",
 ];
 
@@ -49,7 +49,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
   const whatsappUrl = useMemo(() => {
     const text = [
-      `Hi Hikma, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
+      `Hi Hamza, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
       `I need: ${form.service}`,
       `Timeline: ${form.timeline}`,
       "",
@@ -131,7 +131,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
         </label>
       </div>
       <label className="field">
-        Tell us about it
+        Tell me about it
         <textarea
           value={form.message}
           onChange={update("message")}
@@ -148,7 +148,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
         </button>
       </div>
       <p role="status" aria-live="polite" style={{ margin: 0, fontWeight: 600 }}>
-        {status === "sent" ? "Email sent. We'll reply to the address you gave." : null}
+        {status === "sent" ? "Sent. I'll reply to the email address you gave." : null}
         {status === "error" ? <span style={{ color: "var(--danger)" }}>{error}</span> : null}
       </p>
     </form>

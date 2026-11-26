@@ -25,24 +25,22 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hikmasolutions.co.z
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Hikma Solutions | Websites, business systems and cyber security in Durban",
+  title: "Hikma Solutions | Websites and cyber security in Durban",
   description:
-    "Durban studio building websites and business systems for South African companies, and testing them the way an attacker would.",
+    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does.",
   icons: {
     icon: ["/favicon.ico", "/favicon-32x32.png", "/favicon-16x16.png"],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Hikma Solutions | Build it. Secure it.",
-    description:
-      "Websites, business systems and security testing for South African businesses.",
+    title: "Hikma Solutions",
+    description: "I build your website. Then I try to hack it.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hikma Solutions | Build it. Secure it.",
-    description:
-      "Websites, business systems and security testing for South African businesses.",
+    title: "Hikma Solutions",
+    description: "I build your website. Then I try to hack it.",
   },
 };
 
@@ -56,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const whatsappHref = whatsappLink("Hi Hikma Solutions, I'd like to talk about ");
+  const whatsappHref = whatsappLink("Hi Hamza, I'd like to talk about ");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -114,29 +112,29 @@ export default function RootLayout({
                 <span style={{ color: "var(--on-dark)" }}>Hikma Solutions</span>
               </Link>
               <p className="muted" style={{ maxWidth: "22rem", marginTop: "1.25rem" }}>
-                Websites and business systems for South African companies, built
-                to stay open to customers and closed to attackers.
+                Hamza&rsquo;s studio in Durban. Websites and business tools for
+                South African businesses, tested for security before they go live.
               </p>
             </div>
             <div>
-              <h2>Build</h2>
+              <h2>Websites</h2>
               <ul>
-                <li><Link href="/services#website-rescue">Website rescue</Link></li>
-                <li><Link href="/services#website-build">Business websites</Link></li>
-                <li><Link href="/services#systems">Business systems</Link></li>
+                <li><Link href="/services#website-rescue">Fix my website</Link></li>
+                <li><Link href="/services#website-build">New website</Link></li>
+                <li><Link href="/services#systems">Replace the spreadsheet</Link></li>
               </ul>
             </div>
             <div>
               <h2>Security</h2>
               <ul>
-                <li><Link href="/security#health-check">Security health check</Link></li>
-                <li><Link href="/security#pentest">Penetration testing</Link></li>
-                <li><Link href="/security#hardening">Fix and harden</Link></li>
-                <li><Link href="/security#watch">Monthly watch</Link></li>
+                <li><Link href="/security#health-check">Security check</Link></li>
+                <li><Link href="/security#pentest">Pen test</Link></li>
+                <li><Link href="/security#hardening">Fix and lock down</Link></li>
+                <li><Link href="/security#watch">Monthly check-up</Link></li>
               </ul>
             </div>
             <div>
-              <h2>Talk to us</h2>
+              <h2>Talk to me</h2>
               <ul>
                 <li>
                   <a href={whatsappHref} target="_blank" rel="noreferrer">
@@ -150,7 +148,7 @@ export default function RootLayout({
           </div>
           <div className="wrap footer-base">
             <p style={{ margin: 0 }}>© {new Date().getFullYear()} {siteConfig.legalName}</p>
-            <p style={{ margin: 0 }}>Security testing only with written permission from the system owner.</p>
+            <p style={{ margin: 0 }}>I only test systems with the owner&rsquo;s written permission.</p>
           </div>
         </footer>
       </body>

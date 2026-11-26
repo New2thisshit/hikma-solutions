@@ -3,12 +3,18 @@
 ## Concept
 
 A jali is the carved lattice screen of Islamic and Indian architecture: it lets
-light and air in while keeping prying eyes out. That is the promise of the new
-site — **open to your customers, closed to everyone else** — and it ties the
-two halves of the business together:
+light and air in while keeping prying eyes out: easy for customers to use, hard
+for anyone else to get into. The headline line is **"I build your website. Then
+I try to hack it."** It ties the two halves of the business together:
 
 - **Build**: websites and business systems that win enquiries and cut admin.
 - **Secure**: health checks, penetration testing, hardening and monthly cover.
+
+## Voice
+
+- First person. Hamza talks to the reader: "I", "you", "we" only for the two of you.
+- Short sentences and everyday words. Explain any technical term the first time.
+- Say what happens, not how great it is. No hype words.
 
 ## Design tokens
 

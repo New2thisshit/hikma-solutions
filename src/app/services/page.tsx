@@ -4,9 +4,9 @@ import OfferDetail from "@/components/offer-detail";
 import { buildOffers, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Build services | Hikma Solutions",
+  title: "Websites and business tools | Hikma Solutions",
   description:
-    "Website rescue, business websites and business system prototypes for South African companies, from a Durban studio.",
+    "Website fixes, new websites, and simple apps to replace spreadsheets, for South African businesses. Built in Durban.",
 };
 
 export default function ServicesPage() {
@@ -14,21 +14,21 @@ export default function ServicesPage() {
     <>
       <section className="band-dark page-hero">
         <div className="wrap">
-          <h1 className="display h1" style={{ maxWidth: "52rem" }}>
-            Websites that win work. Systems that remove admin.
+          <h1 className="display h1" style={{ maxWidth: "50rem" }}>
+            Websites that get your phone ringing
           </h1>
           <p className="lede muted" style={{ marginTop: "1.5rem" }}>
-            Fixed starting prices, clear scope, and every build tested for security
-            before it goes live.
+            And simple tools to get your team off spreadsheets. Every price below is
+            a starting point. You get a fixed quote before I start.
           </p>
           <div className="hero__actions">
             <a
               className="btn btn-saffron"
-              href={whatsappLink("Hi Hikma, which build service fits my business? ")}
+              href={whatsappLink("Hi Hamza, which of these is right for me? ")}
               target="_blank"
               rel="noreferrer"
             >
-              Ask which one fits
+              Not sure? Ask me
             </a>
           </div>
         </div>
@@ -44,21 +44,18 @@ export default function ServicesPage() {
 
       <section className="section band-sunk">
         <div className="wrap split">
-          <div>
-            <h2 className="display h2">Security comes with every build.</h2>
-            <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              Each site we launch gets security headers, two-factor admin access,
-              off-site backups and a pre-launch test. You don&rsquo;t pay extra for
-              the basics.
-            </p>
-          </div>
+          <h2 className="display h2">Every site I build gets hacked once. By me.</h2>
           <div style={{ alignSelf: "center" }}>
-            <p className="muted prose-measure" style={{ marginTop: 0 }}>
-              Already have a site someone else built? A health check tells you where
-              it stands in under a week.
+            <p className="prose-measure" style={{ marginTop: 0, fontSize: "1.125rem" }}>
+              Before your site goes live, I test it like an attacker would. Two-step
+              login, backups and security settings are part of the build. You
+              don&rsquo;t pay extra for the basics.
+            </p>
+            <p className="muted prose-measure">
+              Someone else built your site? I can check that too.
             </p>
             <Link className="text-link" href="/security">
-              See security services
+              See the security side
             </Link>
           </div>
         </div>

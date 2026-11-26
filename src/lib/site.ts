@@ -17,152 +17,145 @@ export type Offer = {
   timeline: string;
   summary: string;
   includes: string[];
-  outcome: string;
   ask: string;
 };
 
 /*
  * Prices live here so they can be changed in one place.
+ * Keep the language simple: short sentences, everyday words.
  */
 export const buildOffers: Offer[] = [
   {
     slug: "website-rescue",
-    name: "Website rescue",
+    name: "Fix my website",
     price: "From R3,500",
-    timeline: "3–7 days",
+    timeline: "3 to 7 days",
     summary:
-      "Your site exists but visitors leave without calling. We fix the message, the mobile layout and the path to WhatsApp.",
+      "You have a website, but it isn't bringing in calls. I find out why and fix it.",
     includes: [
-      "Homepage and messaging review",
-      "Rewritten hero and calls to action",
-      "Mobile layout fixes",
-      "WhatsApp and contact journey",
-      "SEO basics and launch checklist",
+      "I look at your site the way a new customer would",
+      "Clearer words at the top of the page",
+      "Works properly on phones",
+      "A WhatsApp button people actually see",
+      "Basic Google setup so people can find you",
     ],
-    outcome: "A site that gives visitors a reason to get in touch.",
-    ask: "Hi Hikma, I'd like a website rescue. My site is: ",
+    ask: "Hi Hamza, can you look at my website? It's: ",
   },
   {
     slug: "website-build",
-    name: "Business website",
+    name: "New website",
     price: "From R8,000",
-    timeline: "2–4 weeks",
+    timeline: "2 to 4 weeks",
     summary:
-      "A new site for a service business, written and built around trust, speed on mobile and getting quote requests.",
+      "A new site for your business. I write it, design it, build it and check it's safe before it goes live.",
     includes: [
-      "Home, Services, About, Work and Contact pages",
-      "Copywriting and page structure",
-      "Responsive Next.js build",
+      "Home, services, about, your work and contact pages",
+      "I write the words with you, so it sounds like your business",
+      "Fast on phones",
       "Contact form and WhatsApp",
-      "Security headers and analytics set up at launch",
+      "Security set up from day one",
     ],
-    outcome: "A site you can confidently send to prospects.",
-    ask: "Hi Hikma, I need a new business website for: ",
+    ask: "Hi Hamza, I need a new website for my business: ",
   },
   {
     slug: "systems",
-    name: "Business system prototype",
+    name: "Replace the spreadsheet",
     price: "From R15,000",
-    timeline: "1–3 weeks",
+    timeline: "1 to 3 weeks",
     summary:
-      "For teams running important work on paper, spreadsheets or WhatsApp groups. We map it and prototype the software.",
+      "Your team runs on paper forms, spreadsheets or a busy WhatsApp group. I turn that into a simple app you can try before you pay for the full build.",
     includes: [
-      "Workflow mapping session",
-      "User roles and data plan",
-      "Clickable dashboard or app prototype",
-      "Feature list for version one",
-      "Fixed-scope quote for the full build",
+      "We sit down and map how the work happens now",
+      "A clickable version your team can test",
+      "Who sees what, and what gets saved",
+      "A list of what goes in version one",
+      "A fixed quote for building the real thing",
     ],
-    outcome: "A prototype your team can try before you commit to a build.",
-    ask: "Hi Hikma, I want to turn this process into a system: ",
+    ask: "Hi Hamza, I want to get this off a spreadsheet: ",
   },
 ];
 
 export const securityOffers: Offer[] = [
   {
     slug: "health-check",
-    name: "Security health check",
+    name: "Security check",
     price: "From R2,500",
-    timeline: "3–5 days",
+    timeline: "3 to 5 days",
     summary:
-      "A look at your business from the outside, the way an attacker would start: your website, domain, email and anything left exposed.",
+      "I look at your business from the outside, the way a hacker would start. Website, domain, email, anything left open.",
     includes: [
-      "Website and hosting configuration review",
-      "SSL, security headers and outdated software",
-      "Email spoofing protection (SPF, DKIM, DMARC)",
-      "Exposed admin panels, files and services",
-      "Plain-language report with fixes in priority order",
+      "Out-of-date software and plugins",
+      "Admin pages anyone can find",
+      "Whether scammers can fake emails from your address",
+      "Your SSL certificate and browser security settings",
+      "A short report: what's wrong, why it matters, what to fix first",
     ],
-    outcome: "A short list of what to fix first, and why.",
-    ask: "Hi Hikma, I'd like a security health check for: ",
+    ask: "Hi Hamza, I'd like a security check for: ",
   },
   {
     slug: "pentest",
-    name: "Web app penetration test",
+    name: "Pen test",
     price: "From R12,000",
-    timeline: "1–2 weeks",
+    timeline: "1 to 2 weeks",
     summary:
-      "Hands-on testing of your web app, portal or API: logins, permissions, payments and the data customers trust you with.",
+      "For apps where customers log in, pay or upload things. With your written OK, I try to break in by hand and show you exactly how I did it.",
     includes: [
-      "Scoping call and signed authorisation letter",
-      "Manual testing guided by the OWASP Top 10",
-      "Login, session and access control testing",
-      "Injection, file upload and business logic flaws",
-      "Report with evidence, risk ratings and one free retest",
+      "We agree in writing what I can and can't touch",
+      "Can one customer see another customer's data?",
+      "Can someone skip the login or the payment?",
+      "Can a bad upload or form take over the system?",
+      "Full report with proof, plus a free retest after you fix things",
     ],
-    outcome: "Proof of what can be broken, before someone else finds it.",
-    ask: "Hi Hikma, I'd like a penetration test for our web app: ",
+    ask: "Hi Hamza, I'd like a pen test on our app: ",
   },
   {
     slug: "hardening",
-    name: "Fix and harden",
+    name: "Fix and lock down",
     price: "From R4,500",
-    timeline: "2–10 days",
+    timeline: "2 to 10 days",
     summary:
-      "We fix what the report found, on sites we built or ones we didn't: updates, configuration, access and backups.",
+      "Got a report, from me or someone else? I fix the problems, even on sites I didn't build.",
     includes: [
-      "Patch and update CMS, plugins and dependencies",
-      "Security headers, firewall and Cloudflare setup",
-      "Two-factor login and admin access clean-up",
-      "Off-site backups with a restore test",
-      "Before-and-after evidence for your records",
+      "Update everything that's out of date",
+      "Two-step login for every admin account",
+      "Remove old logins nobody uses",
+      "Backups stored somewhere else, and tested",
+      "A record of what I changed",
     ],
-    outcome: "The issues closed, with a record of what changed.",
-    ask: "Hi Hikma, I have a security report and need help fixing it.",
+    ask: "Hi Hamza, I need help fixing security problems on: ",
   },
   {
     slug: "watch",
-    name: "Monthly watch",
-    price: "From R1,200 / month",
+    name: "Monthly check-up",
+    price: "From R1,200 a month",
     timeline: "Ongoing",
     summary:
-      "Light, ongoing cover for small businesses: we check monthly, patch what needs patching and tell you when something changes.",
+      "I keep an eye on your site every month, keep it updated, and tell you if anything changes.",
     includes: [
-      "Monthly external scan and change report",
+      "A scan every month, with a short update",
       "Software and plugin updates",
-      "Uptime and SSL expiry monitoring",
-      "Backup checks",
-      "First response if something goes wrong",
+      "A heads-up if your site goes down",
+      "Backups checked",
+      "You call me first if something goes wrong",
     ],
-    outcome: "Someone keeping an eye on it, every month.",
-    ask: "Hi Hikma, I'm interested in monthly security cover for: ",
+    ask: "Hi Hamza, I'm interested in a monthly check-up for: ",
   },
 ];
 
 export const work = [
   {
-    kind: "Demo build",
-    title: "Fleet logsheet and inspection system",
-    copy: "Paperless trip logs, vehicle inspections, handovers, damage reports and supervisor approvals for a provincial fleet team.",
+    kind: "Demo",
+    title: "Fleet logbook and inspection app",
+    copy: "Drivers fill in trip logs and vehicle checks on their phones. Supervisors approve them. No more paper.",
   },
   {
-    kind: "Demo build",
+    kind: "Demo",
     title: "Panel beater website",
-    copy: "A quote-focused site with before-and-after repair photos, insurer approvals and repair categories.",
+    copy: "Before-and-after repair photos, insurer approvals and a quick quote button.",
   },
   {
-    kind: "Live project",
+    kind: "Live",
     title: "SA Radio and Podcasts directory",
-    copy: "A search-friendly directory of South African stations and shows, built on structured content for organic traffic.",
+    copy: "A searchable list of South African radio stations and podcasts.",
   },
 ];

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Hikma Solutions: open to your customers, closed to everyone else.";
+export const alt = "Hikma Solutions: I build your website. Then I try to hack it.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,10 +49,10 @@ export default function OpenGraphImage() {
             Hikma Solutions
           </p>
           <h1 style={{ fontSize: "68px", lineHeight: 1.05, color: "#eef0f7", margin: 0 }}>
-            Open to your customers. Closed to everyone else.
+            I build your website. Then I try to hack it.
           </h1>
           <p style={{ fontSize: "26px", color: "#aab0cc", margin: 0 }}>
-            Websites, business systems and security testing · Durban
+            Websites and cyber security, Durban
           </p>
         </div>
         <svg width="500" height="630" viewBox="0 0 500 630">

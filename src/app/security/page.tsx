@@ -5,102 +5,98 @@ import SampleReport from "@/components/sample-report";
 import { securityOffers, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cyber security services | Hikma Solutions",
+  title: "Cyber security for small businesses | Hikma Solutions",
   description:
-    "Security health checks, web app penetration testing, hardening and monthly monitoring for South African small businesses. Based in Durban.",
+    "Security checks, pen tests, fixes and monthly check-ups for South African small businesses, explained in plain English. Based in Durban.",
   openGraph: {
-    title: "Cyber security services | Hikma Solutions",
-    description:
-      "Find the weak spots in your website and systems before someone else does.",
+    title: "Cyber security for small businesses | Hikma Solutions",
+    description: "I try to hack your website, so a stranger can't.",
   },
 };
 
 const reasons = [
   {
-    title: "Most attacks aren't personal",
-    copy: "Bots scan every website on the internet for known weak spots: old plugins, default passwords, exposed admin pages. Being small doesn't make you invisible.",
+    title: "It's usually not personal",
+    copy: "Bots scan millions of websites a day, looking for old plugins and weak passwords. They don't care how big you are. If your site has a gap, they find it.",
   },
   {
-    title: "Fake invoices start with your domain",
-    copy: "Without the right email records, anyone can send mail that looks like it came from you, asking clients to pay into a new account.",
+    title: "Scammers can pretend to be you",
+    copy: "If your email isn't set up properly, anyone can send an email that looks like it came from you, asking your clients to pay into a new bank account.",
   },
   {
-    title: "POPIA expects reasonable safeguards",
-    copy: "If you hold customer information, POPIA requires appropriate technical measures to protect it. A dated report shows what was checked and fixed.",
+    title: "The law expects you to try",
+    copy: "POPIA says businesses must take reasonable steps to protect personal information. My report gives you a dated record of what was checked and what was fixed.",
   },
 ];
 
 const rules = [
-  "We only test systems you own or are authorised to have tested, after a signed scope letter.",
-  "Testing happens in agreed time windows, with a direct line to us if anything looks wrong.",
-  "Findings go to you alone. We don't publish or share them.",
-  "We don't keep copies of your data once the report is delivered.",
+  "I only test what you own, after you say yes in writing.",
+  "We agree when I test, and you can reach me the whole time.",
+  "What I find goes to you and nobody else.",
+  "I delete your data when the job's done.",
 ];
 
 const faqs = [
   {
-    q: "Do I need a health check or a penetration test?",
-    a: "If you have a brochure website, a booking form or an online shop on a platform like WordPress, start with a health check. If customers log in, pay, upload documents or see their own data, you need a penetration test.",
+    q: "Which one do I need?",
+    a: "If your site is mostly information and a contact form, start with a security check. If customers log in, pay, or upload things, you need a pen test.",
   },
   {
-    q: "Will testing take my website down?",
-    a: "A health check only looks from the outside and doesn't put load on your site. Penetration tests are planned with you, run in agreed windows, and avoid anything that could damage data. Where possible we test a staging copy.",
+    q: "Will you break my website?",
+    a: "A security check only looks from the outside, so no. A pen test is planned with you, done at agreed times, and I stay away from anything that could damage your data. Where I can, I test a copy of your site instead of the real one.",
   },
   {
-    q: "Can you test a site you didn't build?",
-    a: "Yes, as long as you own it or have written permission from whoever does. We'll ask for that before we start.",
+    q: "Can you check a site you didn't build?",
+    a: "Yes. You just need to own it, or have written permission from whoever does.",
   },
   {
     q: "Does this make us POPIA compliant?",
-    a: "No single test does. Our work covers the technical safeguards side, and the report gives you a record of what was checked and fixed. For the legal side, speak to your information officer or legal adviser.",
+    a: "Not on its own. I cover the technical side, like passwords, updates and backups. For the legal side, speak to your information officer or a lawyer.",
   },
   {
-    q: "What do you need from us to start?",
-    a: "Your website address, what the system does, and who to contact. For a penetration test we'll also need test accounts and a signed scope letter.",
+    q: "What do you need from me?",
+    a: "Your website address and a contact person. For a pen test, I'll also need test logins and a signed letter saying what I'm allowed to test.",
   },
 ];
 
 export default function SecurityPage() {
-  const ask = whatsappLink("Hi Hikma, I'd like to talk about securing: ");
+  const ask = whatsappLink("Hi Hamza, I'd like to talk about security for: ");
 
   return (
     <>
       <section className="band-dark page-hero">
         <div className="wrap hero__grid">
           <div>
-            <p className="kicker">Cyber security</p>
-            <h1 className="display h1">Find the weak spots before someone else does.</h1>
+            <h1 className="display h1">I try to hack your website, so a stranger can&rsquo;t.</h1>
             <p className="lede muted" style={{ marginTop: "1.5rem" }}>
-              Security testing and hardening for South African small businesses, in
-              plain language, at prices that make sense below enterprise budgets.
+              With your written OK, I test your site the way a hacker would. Then I
+              show you what I found and how to fix it, in plain English.
             </p>
             <div className="hero__actions">
               <a className="btn btn-saffron" href={ask} target="_blank" rel="noreferrer">
-                Book a health check
+                Get a security check
               </a>
               <a className="btn btn-line" href="#sample">
-                See a sample report
+                See an example report
               </a>
             </div>
           </div>
-          <Jali cols={6} rows={5} light={[0.25, 0.75]} />
+          <Jali cols={6} rows={6} light={[0.3, 0.7]} />
         </div>
       </section>
 
       <section className="section band-sunk">
         <div className="wrap">
-          <h2 className="display h2 prose-measure">Why small businesses get hit.</h2>
-          <div className="split" style={{ marginTop: "2.5rem" }}>
-            {reasons.slice(0, 2).map((r) => (
+          <h2 className="display h2" style={{ maxWidth: "40rem" }}>
+            &ldquo;Why would anyone hack a small business?&rdquo;
+          </h2>
+          <div className="reasons">
+            {reasons.map((r) => (
               <div key={r.title}>
                 <h3 className="h3">{r.title}</h3>
                 <p className="muted" style={{ marginTop: "0.75rem" }}>{r.copy}</p>
               </div>
             ))}
-          </div>
-          <div style={{ marginTop: "2.5rem", paddingTop: "2.5rem", borderTop: "1.5px solid var(--line)" }}>
-            <h3 className="h3">{reasons[2].title}</h3>
-            <p className="muted prose-measure" style={{ marginTop: "0.75rem" }}>{reasons[2].copy}</p>
           </div>
         </div>
       </section>
@@ -116,14 +112,14 @@ export default function SecurityPage() {
       <section id="sample" className="band-dark section" style={{ scrollMarginTop: "1rem" }}>
         <div className="wrap hero__grid" style={{ alignItems: "start" }}>
           <div className="prose-measure">
-            <h2 className="display h2">A report you can act on.</h2>
+            <h2 className="display h2">What you get at the end</h2>
             <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              Every finding says what it is, what it means for your business, and how
-              to fix it, in priority order. Your developer gets the technical evidence
-              in an appendix.
+              A short list. Each problem says why it matters and how to fix it,
+              worst first. Your developer gets the technical proof in a separate
+              section.
             </p>
             <p className="muted" style={{ marginTop: "1.25rem" }}>
-              Sample for a made-up practice. Open any finding.
+              This one is for a made-up dental practice. Tap a problem to open it.
             </p>
           </div>
           <SampleReport />
@@ -132,27 +128,27 @@ export default function SecurityPage() {
 
       <section className="section">
         <div className="wrap">
-          <h2 className="display h2 prose-measure">How a test runs.</h2>
+          <h2 className="display h2">How a test goes</h2>
           <ol className="steps" style={{ ["--cols" as string]: 5 }}>
             <li>
-              <h3>Scope and sign</h3>
-              <p className="muted">We agree what&rsquo;s in and out of bounds, in writing.</p>
+              <h3>We agree in writing</h3>
+              <p className="muted">What I can test, what I can&rsquo;t, and when.</p>
             </li>
             <li>
-              <h3>Test</h3>
-              <p className="muted">Automated checks first, then manual testing of what matters.</p>
+              <h3>I test</h3>
+              <p className="muted">Tools first, then by hand where it counts.</p>
             </li>
             <li>
-              <h3>Report</h3>
-              <p className="muted">Plain-language findings, ranked, with evidence attached.</p>
+              <h3>You get the report</h3>
+              <p className="muted">Plain English, worst problem first.</p>
             </li>
             <li>
-              <h3>Fix</h3>
-              <p className="muted">Your developer fixes them, or we do.</p>
+              <h3>It gets fixed</h3>
+              <p className="muted">By your developer, or by me.</p>
             </li>
             <li>
-              <h3>Retest</h3>
-              <p className="muted">We confirm each fix holds and update the report.</p>
+              <h3>I check again</h3>
+              <p className="muted">To make sure each fix actually works.</p>
             </li>
           </ol>
         </div>
@@ -161,17 +157,17 @@ export default function SecurityPage() {
       <section className="section band-sunk">
         <div className="wrap split">
           <div>
-            <h2 className="display h2">How we work.</h2>
-            <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              Security testing needs trust on both sides. These rules apply to every
-              engagement.
+            <h2 className="display h2">My rules</h2>
+            <p className="prose-measure" style={{ marginTop: "1.25rem", fontSize: "1.125rem" }}>
+              You&rsquo;re letting a stranger try to break into your business. You
+              should know exactly how I work.
             </p>
-            <p className="muted prose-measure" style={{ marginTop: "1.25rem" }}>
-              We also hunt on public bug bounty programmes on HackerOne and YesWeHack,
-              which keeps our testing in step with how real attacks work.
+            <p className="muted prose-measure">
+              I also hunt for bugs on HackerOne and YesWeHack, where companies pay
+              people to find holes in their apps. It keeps me sharp.
             </p>
           </div>
-          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.0625rem" }}>
+          <ul className="check-list" style={{ alignContent: "center", fontSize: "1.125rem", fontWeight: 600 }}>
             {rules.map((r) => (
               <li key={r}>{r}</li>
             ))}
@@ -181,7 +177,7 @@ export default function SecurityPage() {
 
       <section className="section">
         <div className="wrap split">
-          <h2 className="display h2">Questions people ask first.</h2>
+          <h2 className="display h2">Things people ask me</h2>
           <div className="faq">
             {faqs.map((f) => (
               <details key={f.q}>
@@ -198,16 +194,16 @@ export default function SecurityPage() {
 
       <section className="band-dark section">
         <div className="wrap" style={{ display: "grid", gap: "2rem" }}>
-          <h2 className="display h2" style={{ maxWidth: "48rem" }}>
-            Not sure where you stand? Start with a health check.
+          <h2 className="display h2" style={{ maxWidth: "44rem" }}>
+            Not sure where you stand? Start with a security check.
           </h2>
           <p className="lede muted">
-            Send your website address on WhatsApp and we&rsquo;ll tell you what it
-            covers and when we can start.
+            Send me your website address. I&rsquo;ll tell you what I&rsquo;d look at
+            and when I can start.
           </p>
           <div className="hero__actions" style={{ marginTop: 0 }}>
             <a className="btn btn-saffron" href={ask} target="_blank" rel="noreferrer">
-              Book a health check
+              Get a security check
             </a>
           </div>
         </div>

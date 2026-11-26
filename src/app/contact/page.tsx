@@ -5,22 +5,22 @@ import { siteConfig, whatsappLink } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Hikma Solutions",
   description:
-    "Contact Hikma Solutions in Durban about a website, a business system or a security check.",
+    "WhatsApp or email Hamza at Hikma Solutions in Durban about a website, a business tool or a security check.",
 };
 
 export default function ContactPage() {
-  const whatsappHref = whatsappLink("Hi Hikma Solutions, here's what I need help with: ");
+  const whatsappHref = whatsappLink("Hi Hamza, here's what I need help with: ");
 
   return (
     <>
       <section className="band-dark page-hero">
         <div className="wrap">
           <h1 className="display h1" style={{ maxWidth: "50rem" }}>
-            Tell us what&rsquo;s not working.
+            Talk to me
           </h1>
           <p className="lede muted" style={{ marginTop: "1.5rem" }}>
-            A website link, a spreadsheet that runs your week, or a worry about
-            security. Send whatever you have and we&rsquo;ll suggest a first step.
+            WhatsApp is quickest. Send a website link, a photo of the spreadsheet,
+            or just a few lines about what&rsquo;s going wrong.
           </p>
           <div className="hero__actions">
             <a className="btn btn-saffron" href={whatsappHref} target="_blank" rel="noreferrer">
@@ -36,7 +36,7 @@ export default function ContactPage() {
       <section className="section">
         <div className="wrap split">
           <div>
-            <h2 className="display h2" style={{ marginBottom: "2rem" }}>Or fill this in.</h2>
+            <h2 className="display h2" style={{ marginBottom: "2rem" }}>Prefer a form?</h2>
             <ContactForm />
           </div>
           <div style={{ display: "grid", gap: "2.5rem", alignContent: "start" }}>
@@ -44,24 +44,24 @@ export default function ContactPage() {
               <h3 className="h3">What happens next</h3>
               <ol className="steps" style={{ ["--cols" as string]: 1, marginTop: "1.5rem", gap: "1.5rem" }}>
                 <li>
-                  <h3>We read it properly</h3>
-                  <p className="muted">And look at your site or process before replying.</p>
+                  <h3>I read it and look at your site</h3>
+                  <p className="muted">Before I reply, so my answer is actually useful.</p>
                 </li>
                 <li>
-                  <h3>You get a recommendation</h3>
-                  <p className="muted">The smallest useful first step, with a price range.</p>
+                  <h3>I tell you what I&rsquo;d do</h3>
+                  <p className="muted">The first step, and roughly what it costs.</p>
                 </li>
                 <li>
-                  <h3>We agree scope in writing</h3>
-                  <p className="muted">For security work, that includes a signed authorisation letter.</p>
+                  <h3>We put it in writing</h3>
+                  <p className="muted">For security work, that includes your signed OK to test.</p>
                 </li>
               </ol>
             </div>
             <div>
-              <h3 className="h3">Where we are</h3>
+              <h3 className="h3">Where I am</h3>
               <p className="muted" style={{ marginTop: "0.75rem" }}>
-                {siteConfig.location}. We work with clients across South Africa,
-                remotely or in person around KwaZulu-Natal.
+                Durban. I work with businesses all over South Africa online, and can
+                meet in person around KZN.
               </p>
             </div>
           </div>

@@ -5,23 +5,12 @@ import SampleReport from "@/components/sample-report";
 import { buildOffers, securityOffers, whatsappLink, work } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Hikma Solutions | Websites, business systems and cyber security in Durban",
+  title: "Hikma Solutions | Websites and cyber security in Durban",
   description:
-    "We build websites and business systems for South African companies, then test them the way an attacker would. Based in Durban.",
+    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does. Hamza, Hikma Solutions, Durban.",
 };
 
-const whatsappHref = whatsappLink(
-  "Hi Hikma Solutions, here's my website / what I need help with: "
-);
-
-const sectors = [
-  "Panel beaters and auto repair",
-  "Accounting and professional firms",
-  "Fleet, logistics and field teams",
-  "Construction and trades",
-  "Clinics and practices",
-  "Online shops",
-];
+const whatsappHref = whatsappLink("Hi Hamza, here's my website: ");
 
 export default function Home() {
   return (
@@ -29,19 +18,18 @@ export default function Home() {
       <section className="band-dark hero">
         <div className="wrap hero__grid">
           <div>
-            <h1 className="display h1">
-              Open to your customers. Closed to everyone else.
-            </h1>
+            <h1 className="display h1">I build your website. Then I try to hack it.</h1>
             <p className="lede muted" style={{ marginTop: "1.75rem" }}>
-              Hikma Solutions builds websites and business systems for South
-              African companies, then tests them the way an attacker would.
+              I&rsquo;m Hamza, and Hikma Solutions is my studio in Durban. I make
+              websites and business tools that bring in customers, and I check
+              they&rsquo;re safe before a hacker does.
             </p>
             <div className="hero__actions">
               <a className="btn btn-saffron" href={whatsappHref} target="_blank" rel="noreferrer">
-                WhatsApp us your website
+                WhatsApp me your website
               </a>
               <Link className="btn btn-line" href="/security">
-                See security services
+                How the hacking part works
               </Link>
             </div>
           </div>
@@ -51,21 +39,15 @@ export default function Home() {
 
       <section className="section">
         <div className="wrap">
-          <div className="prose-measure">
-            <h2 className="display h2">Two halves of the same job.</h2>
-            <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              A website that brings in work is only useful if it can&rsquo;t be
-              turned against you. We do both, so nothing falls between two
-              suppliers.
-            </p>
-          </div>
+          <h2 className="display h2">What I can do for you</h2>
+          <p className="muted prose-measure" style={{ marginTop: "1rem" }}>
+            These prices are where things start. You get a fixed quote before any
+            work begins.
+          </p>
 
-          <div className="split" style={{ marginTop: "3.5rem" }}>
+          <div className="split" style={{ marginTop: "3rem" }}>
             <div>
               <h3 className="h3">Build</h3>
-              <p className="muted" style={{ margin: "0.6rem 0 0" }}>
-                Sites and systems that win enquiries and cut admin.
-              </p>
               <ul className="offer-list">
                 {buildOffers.map((o) => (
                   <li key={o.slug}>
@@ -77,17 +59,9 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p style={{ marginTop: "1.5rem" }}>
-                <Link className="text-link" href="/services">
-                  All build services
-                </Link>
-              </p>
             </div>
             <div>
-              <h3 className="h3">Secure</h3>
-              <p className="muted" style={{ margin: "0.6rem 0 0" }}>
-                Find the weak points before someone else does, then close them.
-              </p>
+              <h3 className="h3">Keep it safe</h3>
               <ul className="offer-list">
                 {securityOffers.map((o) => (
                   <li key={o.slug}>
@@ -99,11 +73,6 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p style={{ marginTop: "1.5rem" }}>
-                <Link className="text-link" href="/security">
-                  All security services
-                </Link>
-              </p>
             </div>
           </div>
         </div>
@@ -112,23 +81,22 @@ export default function Home() {
       <section className="band-dark section">
         <div className="wrap hero__grid" style={{ alignItems: "start" }}>
           <div className="prose-measure">
-            <h2 className="display h2">What you get back from a health check.</h2>
+            <h2 className="display h2">What a security check looks like</h2>
             <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              No 80-page scanner dump. A short report in plain language: what we
-              found, what it means for your business, and the order to fix it in.
+              You don&rsquo;t get 80 pages of jargon. You get a short list in plain
+              English, with the worst problem at the top.
             </p>
             <p className="muted" style={{ marginTop: "1.25rem" }}>
-              This is a sample for a made-up practice. Open any finding to see how
-              it reads.
+              This one is for a made-up dental practice. Tap a problem to open it.
             </p>
             <div className="hero__actions">
               <a
                 className="btn btn-saffron"
-                href={whatsappLink("Hi Hikma, I'd like a security health check for: ")}
+                href={whatsappLink("Hi Hamza, I'd like a security check for: ")}
                 target="_blank"
                 rel="noreferrer"
               >
-                Book a health check
+                Get a check for my site
               </a>
             </div>
           </div>
@@ -137,50 +105,66 @@ export default function Home() {
       </section>
 
       <section className="section">
-        <div className="wrap">
-          <h2 className="display h2 prose-measure">How a project runs.</h2>
-          <ol className="steps" style={{ ["--cols" as string]: 4 }}>
-            <li>
-              <h3>Diagnose</h3>
-              <p className="muted">
-                Start with the business problem: lost leads, admin time, or risk.
-              </p>
-            </li>
-            <li>
-              <h3>Build the smallest useful version</h3>
-              <p className="muted">
-                One visible improvement first, with updates every week.
-              </p>
-            </li>
-            <li>
-              <h3>Attack it</h3>
-              <p className="muted">
-                Before launch, we test our own work the way an attacker would.
-              </p>
-            </li>
-            <li>
-              <h3>Hand over and keep watch</h3>
-              <p className="muted">
-                Clear notes, your logins in your name, and optional monthly cover.
-              </p>
-            </li>
-          </ol>
+        <div className="wrap note">
+          <h2 className="display h2">Why I do both</h2>
+          <div className="note__body">
+            <p>
+              A good-looking website doesn&rsquo;t help you much if someone can walk
+              in through the back door.
+            </p>
+            <p>
+              Most web designers never test for that. Most security companies
+              don&rsquo;t build websites, and their prices are made for big companies.
+            </p>
+            <p>
+              So I do both. I build your site, then I attack it myself before it
+              goes live. One person, one WhatsApp number, and nothing gets lost
+              between two companies.
+            </p>
+            <p className="note__sign">Hamza</p>
+          </div>
         </div>
       </section>
 
       <section className="section band-sunk">
         <div className="wrap">
-          <div className="prose-measure">
-            <h2 className="display h2">Recent work.</h2>
-            <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              Demo builds are labelled as demos. Client stories go up once the
-              client agrees.
-            </p>
-          </div>
+          <h2 className="display h2">How working with me goes</h2>
+          <ol className="steps" style={{ ["--cols" as string]: 5 }}>
+            <li>
+              <h3>You send me a message</h3>
+              <p className="muted">Your website, your idea, or what&rsquo;s bugging you.</p>
+            </li>
+            <li>
+              <h3>I tell you what I&rsquo;d do</h3>
+              <p className="muted">And what it costs. No surprises later.</p>
+            </li>
+            <li>
+              <h3>I build it</h3>
+              <p className="muted">You get an update from me every week.</p>
+            </li>
+            <li>
+              <h3>I try to hack it</h3>
+              <p className="muted">Before it goes live, not after.</p>
+            </li>
+            <li>
+              <h3>You get the keys</h3>
+              <p className="muted">All logins in your name. I stay on call if you want.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <h2 className="display h2">Things I&rsquo;ve built</h2>
+          <p className="muted prose-measure" style={{ marginTop: "1rem" }}>
+            Demos are marked as demos. Client work goes up here once the client
+            says it&rsquo;s okay.
+          </p>
           <ul className="work-list">
             {work.map((w) => (
               <li key={w.title}>
-                <span className="muted" style={{ fontWeight: 600 }}>{w.kind}</span>
+                <span className="work-tag">{w.kind}</span>
                 <span style={{ fontWeight: 700, fontSize: "1.125rem" }}>{w.title}</span>
                 <span className="muted">{w.copy}</span>
               </li>
@@ -189,38 +173,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="wrap split">
-          <div>
-            <h2 className="display h2">Built for businesses that run on trust.</h2>
-            <p className="lede muted" style={{ marginTop: "1.25rem" }}>
-              If customers send you their details, payments or vehicle keys, your
-              website needs to be as trustworthy as your front counter.
-            </p>
-          </div>
-          <ul className="check-list" style={{ alignContent: "center", fontWeight: 600, fontSize: "1.125rem" }}>
-            {sectors.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <section className="band-dark section">
         <div className="wrap" style={{ display: "grid", gap: "2rem" }}>
-          <h2 className="display h2" style={{ maxWidth: "48rem" }}>
-            Send us your website. We&rsquo;ll tell you what we&rsquo;d fix first.
+          <h2 className="display h2" style={{ maxWidth: "44rem" }}>
+            Send me your website link. I&rsquo;ll tell you the first thing I&rsquo;d fix.
           </h2>
-          <p className="lede muted">
-            Whether it&rsquo;s more enquiries or fewer weak spots, you&rsquo;ll get a
-            straight answer on WhatsApp, not a sales pitch.
-          </p>
+          <p className="lede muted">Free, and I reply myself.</p>
           <div className="hero__actions" style={{ marginTop: 0 }}>
             <a className="btn btn-saffron" href={whatsappHref} target="_blank" rel="noreferrer">
-              WhatsApp us your website
+              WhatsApp me your website
             </a>
             <Link className="btn btn-line" href="/contact">
-              Use the contact form
+              Or fill in a form
             </Link>
           </div>
         </div>

@@ -5,16 +5,14 @@ export default function OfferDetail({ offer }: { offer: Offer }) {
   return (
     <article id={offer.slug} className="offer-detail">
       <div>
-        <h2 className="display h2" style={{ fontSize: "clamp(1.6rem, 3vw, 2.25rem)" }}>
-          {offer.name}
-        </h2>
+        <h2 className="display offer-detail__name">{offer.name}</h2>
         <dl className="offer-meta">
           <dt>Price</dt>
           <dd>{offer.price}</dd>
-          <dt>Timeline</dt>
+          <dt>How long</dt>
           <dd className="muted">{offer.timeline}</dd>
         </dl>
-        <p className="muted prose-measure" style={{ marginTop: "1rem" }}>
+        <p className="prose-measure" style={{ marginTop: "1rem", fontSize: "1.125rem" }}>
           {offer.summary}
         </p>
         <a
@@ -24,16 +22,16 @@ export default function OfferDetail({ offer }: { offer: Offer }) {
           target="_blank"
           rel="noreferrer"
         >
-          Ask about {offer.name.toLowerCase()}
+          WhatsApp me about this
         </a>
       </div>
       <div>
+        <p style={{ fontWeight: 700, margin: "0 0 1rem" }}>What you get</p>
         <ul className="check-list">
           {offer.includes.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p className="outcome">{offer.outcome}</p>
       </div>
     </article>
   );

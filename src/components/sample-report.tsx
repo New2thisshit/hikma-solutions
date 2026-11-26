@@ -1,38 +1,38 @@
 const findings = [
   {
     severity: "critical",
-    label: "Critical",
-    title: "Booking plugin has a known, public exploit",
-    risk: "The site runs a plugin version with a published vulnerability. Automated bots scan for it daily and can take over the site without a password.",
-    fix: "Update the plugin, check for signs of compromise, and turn on automatic security updates.",
+    label: "Fix today",
+    title: "The booking plugin is old and has a known hole",
+    risk: "Hackers have a public guide for breaking into this exact version. Bots look for it every day. They don't need your password.",
+    fix: "Update the plugin, check nobody got in already, and turn on automatic updates.",
   },
   {
     severity: "high",
-    label: "High",
-    title: "Anyone can send email as your domain",
-    risk: "There is no DMARC record, so a scammer can send invoices that look like they came from accounts@yourbusiness.co.za.",
-    fix: "Publish SPF, DKIM and DMARC records, starting in monitoring mode so legitimate mail keeps flowing.",
+    label: "Fix this week",
+    title: "Anyone can send emails that look like they're from you",
+    risk: "A scammer could email your patients a fake invoice from accounts@ your domain, and it would look real.",
+    fix: "Add three email settings (SPF, DKIM and DMARC) that tell inboxes which emails are really yours.",
   },
   {
     severity: "high",
-    label: "High",
-    title: "Admin login is public with no attempt limit",
-    risk: "The login page accepts unlimited password guesses, and the admin account has no second factor.",
-    fix: "Add rate limiting, two-factor login and move admin access behind Cloudflare Access.",
+    label: "Fix this week",
+    title: "Your admin login lets people guess forever",
+    risk: "There's no limit on wrong passwords, and no second step like a code on your phone.",
+    fix: "Limit login attempts and turn on two-step login.",
   },
   {
     severity: "medium",
-    label: "Medium",
-    title: "Backups live on the same server as the site",
-    risk: "If the server is wiped or held to ransom, the backups go with it.",
-    fix: "Send daily backups off-site and test a restore once a quarter.",
+    label: "Fix this month",
+    title: "Your backups are on the same server as your site",
+    risk: "If the server gets wiped or held for ransom, your backups go with it.",
+    fix: "Send a copy somewhere else every day, and test that you can actually restore it.",
   },
   {
     severity: "low",
-    label: "Low",
-    title: "Security headers are missing",
-    risk: "Browsers aren't told to block framing or untrusted scripts, which makes some attacks easier.",
-    fix: "Add a content security policy, HSTS and the standard header set.",
+    label: "When you can",
+    title: "Some browser safety settings are missing",
+    risk: "Small gaps that make a few kinds of attack easier.",
+    fix: "Add the standard security headers. It takes about ten minutes.",
   },
 ];
 
@@ -40,9 +40,9 @@ export default function SampleReport() {
   return (
     <div className="report">
       <div className="report__head">
-        <p className="report__title">Sample health check: example-dental.co.za</p>
+        <p className="report__title">Security check: example-dental.co.za</p>
         <p className="muted" style={{ margin: 0 }}>
-          5 findings, in the order to fix them
+          5 problems, worst first
         </p>
       </div>
       {findings.map((f, i) => (
@@ -54,11 +54,11 @@ export default function SampleReport() {
           </summary>
           <div className="finding__body">
             <p>
-              <strong>What it means. </strong>
+              <strong>Why it matters: </strong>
               {f.risk}
             </p>
             <p>
-              <strong>How we fix it. </strong>
+              <strong>The fix: </strong>
               {f.fix}
             </p>
           </div>

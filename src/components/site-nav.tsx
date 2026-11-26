@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
-  { href: "/services", label: "Build" },
+  { href: "/services", label: "Websites" },
   { href: "/security", label: "Security" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -34,7 +34,7 @@ export default function SiteNav({ whatsappHref }: { whatsappHref: string }) {
         target="_blank"
         rel="noreferrer"
       >
-        WhatsApp us
+        WhatsApp me
       </a>
       <button
         type="button"
@@ -58,7 +58,7 @@ export default function SiteNav({ whatsappHref }: { whatsappHref: string }) {
             </Link>
           ))}
           <a className="btn btn-saffron" href={whatsappHref} target="_blank" rel="noreferrer">
-            WhatsApp us
+            WhatsApp me
           </a>
         </div>
       ) : null}
