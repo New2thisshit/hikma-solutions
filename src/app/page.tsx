@@ -7,10 +7,10 @@ import { buildOffers, securityOffers, whatsappLink, work } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Hikma Solutions | Websites and cyber security in Durban",
   description:
-    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does. Hamza, Hikma Solutions, Durban.",
+    "I build websites and business tools for South African businesses, then I try to hack them before anyone else does. Hikma Solutions, Durban.",
 };
 
-const whatsappHref = whatsappLink("Hi Hamza, here's my website: ");
+const whatsappHref = whatsappLink("Hi Hikma, here's my website: ");
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
           <div>
             <h1 className="display h1">I build your website. Then I try to hack it.</h1>
             <p className="lede muted" style={{ marginTop: "1.75rem" }}>
-              I&rsquo;m Hamza, and Hikma Solutions is my studio in Durban. I make
+              Hikma Solutions is my studio in Durban. I make
               websites and business tools that bring in customers, and I check
               they&rsquo;re safe before a hacker does.
             </p>
@@ -92,7 +92,7 @@ export default function Home() {
             <div className="hero__actions">
               <a
                 className="btn btn-saffron"
-                href={whatsappLink("Hi Hamza, I'd like a security check for: ")}
+                href={whatsappLink("Hi Hikma, I'd like a security check for: ")}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -121,7 +121,7 @@ export default function Home() {
               goes live. One person, one WhatsApp number, and nothing gets lost
               between two companies.
             </p>
-            <p className="note__sign">Hamza</p>
+            <p className="note__sign">Hikma Solutions</p>
           </div>
         </div>
       </section>

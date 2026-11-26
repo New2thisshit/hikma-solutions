@@ -24,7 +24,7 @@ export default function ServicesPage() {
           <div className="hero__actions">
             <a
               className="btn btn-saffron"
-              href={whatsappLink("Hi Hamza, which of these is right for me? ")}
+              href={whatsappLink("Hi Hikma, which of these is right for me? ")}
               target="_blank"
               rel="noreferrer"
             >

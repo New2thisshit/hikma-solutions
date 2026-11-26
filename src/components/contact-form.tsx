@@ -49,7 +49,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
   const whatsappUrl = useMemo(() => {
     const text = [
-      `Hi Hamza, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
+      `Hi Hikma, I'm ${form.name || "-"}${form.company ? ` from ${form.company}` : ""}.`,
       `I need: ${form.service}`,
       `Timeline: ${form.timeline}`,
       "",

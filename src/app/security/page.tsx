@@ -60,7 +60,7 @@ const faqs = [
 ];
 
 export default function SecurityPage() {
-  const ask = whatsappLink("Hi Hamza, I'd like to talk about security for: ");
+  const ask = whatsappLink("Hi Hikma, I'd like to talk about security for: ");
 
   return (
     <>

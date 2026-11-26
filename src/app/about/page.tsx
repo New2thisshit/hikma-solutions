@@ -3,9 +3,9 @@ import Link from "next/link";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Hamza | Hikma Solutions",
+  title: "About | Hikma Solutions",
   description:
-    "Hamza runs Hikma Solutions in Durban. He builds websites and business tools for South African businesses, and tests them for security.",
+    "Hikma Solutions is a small Durban studio that builds websites and business tools for South African businesses, and tests them for security.",
 };
 
 const principles = [
@@ -32,7 +32,7 @@ export default function AboutPage() {
     <>
       <section className="band-dark page-hero">
         <div className="wrap">
-          <h1 className="display h1">Hi, I&rsquo;m Hamza.</h1>
+          <h1 className="display h1" style={{ maxWidth: "48rem" }}>Hi. I&rsquo;m the one who&rsquo;ll build your site.</h1>
           <p className="lede muted" style={{ marginTop: "1.5rem" }}>
             I run Hikma Solutions from Durban. I build websites and business tools
             for South African businesses, and I try to hack them before anyone
@@ -99,7 +99,7 @@ export default function AboutPage() {
           <div className="hero__actions" style={{ marginTop: 0 }}>
             <a
               className="btn btn-saffron"
-              href={whatsappLink("Hi Hamza, here's what's going on: ")}
+              href={whatsappLink("Hi Hikma, here's what's going on: ")}
               target="_blank"
               rel="noreferrer"
             >

@@ -5,11 +5,11 @@ import { siteConfig, whatsappLink } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Hikma Solutions",
   description:
-    "WhatsApp or email Hamza at Hikma Solutions in Durban about a website, a business tool or a security check.",
+    "WhatsApp or email Hikma Solutions in Durban about a website, a business tool or a security check.",
 };
 
 export default function ContactPage() {
-  const whatsappHref = whatsappLink("Hi Hamza, here's what I need help with: ");
+  const whatsappHref = whatsappLink("Hi Hikma, here's what I need help with: ");
 
   return (
     <>

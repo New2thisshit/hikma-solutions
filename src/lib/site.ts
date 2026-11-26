@@ -39,7 +39,7 @@ export const buildOffers: Offer[] = [
       "A WhatsApp button people actually see",
       "Basic Google setup so people can find you",
     ],
-    ask: "Hi Hamza, can you look at my website? It's: ",
+    ask: "Hi Hikma, can you look at my website? It's: ",
   },
   {
     slug: "website-build",
@@ -55,7 +55,7 @@ export const buildOffers: Offer[] = [
       "Contact form and WhatsApp",
       "Security set up from day one",
     ],
-    ask: "Hi Hamza, I need a new website for my business: ",
+    ask: "Hi Hikma, I need a new website for my business: ",
   },
   {
     slug: "systems",
@@ -71,7 +71,7 @@ export const buildOffers: Offer[] = [
       "A list of what goes in version one",
       "A fixed quote for building the real thing",
     ],
-    ask: "Hi Hamza, I want to get this off a spreadsheet: ",
+    ask: "Hi Hikma, I want to get this off a spreadsheet: ",
   },
 ];
 
@@ -90,7 +90,7 @@ export const securityOffers: Offer[] = [
       "Your SSL certificate and browser security settings",
       "A short report: what's wrong, why it matters, what to fix first",
     ],
-    ask: "Hi Hamza, I'd like a security check for: ",
+    ask: "Hi Hikma, I'd like a security check for: ",
   },
   {
     slug: "pentest",
@@ -106,7 +106,7 @@ export const securityOffers: Offer[] = [
       "Can a bad upload or form take over the system?",
       "Full report with proof, plus a free retest after you fix things",
     ],
-    ask: "Hi Hamza, I'd like a pen test on our app: ",
+    ask: "Hi Hikma, I'd like a pen test on our app: ",
   },
   {
     slug: "hardening",
@@ -122,7 +122,7 @@ export const securityOffers: Offer[] = [
       "Backups stored somewhere else, and tested",
       "A record of what I changed",
     ],
-    ask: "Hi Hamza, I need help fixing security problems on: ",
+    ask: "Hi Hikma, I need help fixing security problems on: ",
   },
   {
     slug: "watch",
@@ -138,7 +138,7 @@ export const securityOffers: Offer[] = [
       "Backups checked",
       "You call me first if something goes wrong",
     ],
-    ask: "Hi Hamza, I'm interested in a monthly check-up for: ",
+    ask: "Hi Hikma, I'm interested in a monthly check-up for: ",
   },
 ];
 

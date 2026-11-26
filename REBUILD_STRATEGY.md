@@ -12,7 +12,7 @@ I try to hack it."** It ties the two halves of the business together:
 
 ## Voice
 
-- First person. Hamza talks to the reader: "I", "you", "we" only for the two of you.
+- First person, but no personal name on the site. The owner talks to the reader: "I", "you", "we" only for the two of you.
 - Short sentences and everyday words. Explain any technical term the first time.
 - Say what happens, not how great it is. No hype words.
 

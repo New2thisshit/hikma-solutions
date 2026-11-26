@@ -54,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
-  const whatsappHref = whatsappLink("Hi Hamza, I'd like to talk about ");
+  const whatsappHref = whatsappLink("Hi Hikma, I'd like to talk about ");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -112,7 +112,7 @@ export default function RootLayout({
                 <span style={{ color: "var(--on-dark)" }}>Hikma Solutions</span>
               </Link>
               <p className="muted" style={{ maxWidth: "22rem", marginTop: "1.25rem" }}>
-                Hamza&rsquo;s studio in Durban. Websites and business tools for
+                A small studio in Durban. Websites and business tools for
                 South African businesses, tested for security before they go live.
               </p>
             </div>
